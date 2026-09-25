@@ -1,0 +1,17 @@
+env:
+  id: MyPickPlace-v1
+  robot_uids: panda
+  num_envs: 1
+  obs_mode: state
+  control_mode: pd_ee_delta_pose
+  reward_mode: dense
+  render_mode: human
+
+task:
+  max_episode_steps: 200
+  cube_half_size: 0.025
+  goal_radius: 0.04
+
+algorithm:
+  name: placeholder
+  seed: 0
