@@ -1,0 +1,18 @@
+name: mypickplace
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - libblas=*=*openblas
+  - libopenblas=*=*pthreads*
+  - pinocchio=4.0.0
+  - pip:
+      - mani_skill==3.0.1
+      - sapien==3.0.3
+      - gymnasium==1.4.0
+      - --extra-index-url https://download.pytorch.org/whl/cu128
+      - torch==2.9.1+cu128
+      - numpy==2.4.6
+      - pyyaml==6.0.3
+      - stable-baselines3==2.9.0

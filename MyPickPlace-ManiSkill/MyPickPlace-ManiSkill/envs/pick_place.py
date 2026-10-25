@@ -1,4 +1,5 @@
 from typing import Any
+import sys
 
 import numpy as np
 import sapien
@@ -20,7 +21,7 @@ class MyPickPlaceEnv(BaseEnv):
     Simple Panda pick-and-place task for algorithm development.
 
     Task:
-      1. Pick up a red cube.
+      1. Pick up the selected red or blue cube (red by default).
       2. Move it to a green target region on the tabletop.
       3. Release it and become static.
 
@@ -37,7 +38,8 @@ class MyPickPlaceEnv(BaseEnv):
     # Workspace used for episode randomization.
     object_x_range = (-0.10, 0.05)
     object_y_range = (-0.15, 0.15)
-    goal_x_range = (0.12, 0.28)
+    # Keep tabletop goals reachable with the Panda's downward-facing gripper.
+    goal_x_range = (0.12, 0.16)
     goal_y_range = (-0.15, 0.15)
 
     def __init__(
@@ -45,9 +47,18 @@ class MyPickPlaceEnv(BaseEnv):
         *args,
         robot_uids="panda",
         robot_init_qpos_noise=0.02,
+        target_color="red",
         **kwargs,
     ):
+        if target_color not in ("red", "blue"):
+            raise ValueError("target_color must be 'red' or 'blue'")
+        self.target_color = target_color
         self.robot_init_qpos_noise = robot_init_qpos_noise
+        # SAPIEN's CUDA image transfer is unavailable on Windows. Use the
+        # standard image readback path for both RGB rendering and the viewer.
+        if sys.platform == "win32":
+            kwargs.setdefault("sim_backend", "cpu")
+            kwargs.setdefault("render_backend", "cpu")
         super().__init__(*args, robot_uids=robot_uids, **kwargs)
 
     @property
@@ -95,15 +106,25 @@ class MyPickPlaceEnv(BaseEnv):
         )
         self.table_scene.build()
 
-        self.cube = actors.build_cube(
+        self.red_cube = actors.build_cube(
             self.scene,
             half_size=self.cube_half_size,
             color=[0.9, 0.1, 0.1, 1.0],
-            name="pick_cube",
+            name="cube_red",
             initial_pose=sapien.Pose(
                 p=[0.0, 0.0, self.cube_half_size]
             ),
         )
+        self.blue_cube = actors.build_cube(
+            self.scene,
+            half_size=self.cube_half_size,
+            color=[0.1, 0.3, 0.9, 1.0],
+            name="cube_blue",
+            initial_pose=sapien.Pose(p=[0.0, 0.10, self.cube_half_size]),
+        )
+        self.cubes = {"red": self.red_cube, "blue": self.blue_cube}
+        # Existing target-relative observations and rewards follow this actor.
+        self.cube = self.cubes[self.target_color]
 
         # Thin kinematic green disk used only as a visual target.
         # No collision, so the cube can be placed directly on top of it.
@@ -115,7 +136,9 @@ class MyPickPlaceEnv(BaseEnv):
             name="goal_site",
             body_type="kinematic",
             add_collision=False,
-            initial_pose=sapien.Pose(p=[0.20, 0.0, 0.001]),
+            initial_pose=sapien.Pose(
+                p=[0.14, 0.0, 0.001], q=[0.70710678, 0, 0.70710678, 0]
+            ),
         )
         self._hidden_objects.append(self.goal_site)
 
@@ -136,21 +159,18 @@ class MyPickPlaceEnv(BaseEnv):
             b = len(env_idx)
             self.table_scene.initialize(env_idx)
 
-            # Random cube position.
-            cube_p = torch.zeros((b, 3), device=self.device)
-            cube_p[:, :2] = self._uniform_xy(
-                b,
-                self.object_x_range,
-                self.object_y_range,
-                self.device,
-            )
-            cube_p[:, 2] = self.cube_half_size
-            self.cube.set_pose(
-                Pose.create_from_pq(
-                    p=cube_p,
-                    q=[1, 0, 0, 0],
+            # Separate Y bands leave at least 5 cm between cube surfaces.
+            # Randomly swap bands so color does not imply a fixed side.
+            swap = torch.rand(b, device=self.device) < 0.5
+            for color, cube in self.cubes.items():
+                cube_p = torch.zeros((b, 3), device=self.device)
+                cube_p[:, :2] = self._uniform_xy(
+                    b, self.object_x_range, (-0.15, -0.05), self.device
                 )
-            )
+                upper_band = swap if color == "red" else ~swap
+                cube_p[:, 1] += upper_band.float() * 0.20
+                cube_p[:, 2] = self.cube_half_size
+                cube.set_pose(Pose.create_from_pq(p=cube_p, q=[1, 0, 0, 0]))
 
             # Random tabletop target position.
             goal_p = torch.zeros((b, 3), device=self.device)
@@ -161,18 +181,30 @@ class MyPickPlaceEnv(BaseEnv):
                 self.device,
             )
             goal_p[:, 2] = 0.001
-            self.goal_site.set_pose(Pose.create_from_pq(p=goal_p))
+            # SAPIEN cylinders run along local X; rotate the disk onto the table.
+            self.goal_site.set_pose(Pose.create_from_pq(
+                p=goal_p, q=[0.70710678, 0, 0.70710678, 0]
+            ))
 
     def evaluate(self):
-        # Placement is evaluated in XY because this is a tabletop placement task.
         obj_to_goal_xy = self.cube.pose.p[..., :2] - self.goal_site.pose.p[..., :2]
-        is_obj_placed = torch.linalg.norm(obj_to_goal_xy, axis=1) <= self.goal_radius
+        is_obj_placed = (
+            (torch.linalg.norm(obj_to_goal_xy, axis=1) <= self.goal_radius)
+            & ((self.cube.pose.p[:, 2] - self.cube_half_size).abs() <= 0.008)
+        )
 
         is_grasped = self.agent.is_grasping(self.cube)
-        is_released = ~is_grasped
+        is_gripper_open = self.agent.robot.get_qpos()[:, -2:].mean(dim=1) > 0.035
+        is_released = ~is_grasped & is_gripper_open
         is_robot_static = self.agent.is_static(0.2)
+        is_obj_static = (
+            (torch.linalg.norm(self.cube.linear_velocity, dim=1) <= 0.03)
+            & (torch.linalg.norm(self.cube.angular_velocity, dim=1) <= 0.5)
+        )
+        other_cube = self.cubes["blue" if self.target_color == "red" else "red"]
+        is_wrong_grasped = self.agent.is_grasping(other_cube)
 
-        success = is_obj_placed & is_released & is_robot_static
+        success = is_obj_placed & is_released & is_robot_static & is_obj_static & ~is_wrong_grasped
 
         return {
             "success": success,
@@ -180,7 +212,18 @@ class MyPickPlaceEnv(BaseEnv):
             "is_grasped": is_grasped,
             "is_released": is_released,
             "is_robot_static": is_robot_static,
+            "is_obj_static": is_obj_static,
+            "is_wrong_grasped": is_wrong_grasped,
         }
+
+    def select_target(self, object_id: str):
+        """Select an existing cube without resetting or moving the scene."""
+        colors = {"cube_red": "red", "cube_blue": "blue"}
+        if object_id not in colors:
+            raise ValueError(f"Unknown object: {object_id}")
+        self.target_color = colors[object_id]
+        self.cube = self.cubes[self.target_color]
+        return self.get_obs()
 
     def _get_obs_extra(self, info: dict):
         obs = {
@@ -193,6 +236,12 @@ class MyPickPlaceEnv(BaseEnv):
             obs.update(
                 {
                     "obj_pose": self.cube.pose.raw_pose,
+                    "red_cube_pose": self.red_cube.pose.raw_pose,
+                    "blue_cube_pose": self.blue_cube.pose.raw_pose,
+                    "target_color": torch.tensor(
+                        [int(self.target_color == "red"), int(self.target_color == "blue")],
+                        device=self.device, dtype=torch.float32,
+                    ).expand(self.num_envs, -1),
                     "tcp_to_obj_pos": self.cube.pose.p - self.agent.tcp_pose.p,
                     "obj_to_goal_pos": self.goal_site.pose.p - self.cube.pose.p,
                 }

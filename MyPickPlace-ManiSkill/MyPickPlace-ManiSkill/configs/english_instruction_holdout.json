@@ -1,0 +1,22 @@
+[
+  {"id": "new_red_delivery", "instruction": "Please deliver the red cube to the marked green destination.", "expected_object": "cube_red"},
+  {"id": "new_blue_delivery", "instruction": "Please deliver the blue cube to the marked green destination.", "expected_object": "cube_blue"},
+  {"id": "new_red_exclusive", "instruction": "Only the red block should end up on the green disk; keep everything else where it is.", "expected_object": "cube_red"},
+  {"id": "new_blue_exclusive", "instruction": "Only the blue block should end up on the green disk; keep everything else where it is.", "expected_object": "cube_blue"},
+  {"id": "new_red_revision", "instruction": "I was about to ask for blue, but instead please carry the red block to the goal.", "expected_object": "cube_red"},
+  {"id": "new_blue_revision", "instruction": "I was about to ask for red, but instead please carry the blue block to the goal.", "expected_object": "cube_blue"},
+  {"id": "new_red_late_change", "instruction": "Send the blue block to the green disk - sorry, change that to the red block.", "expected_object": "cube_red"},
+  {"id": "new_blue_late_change", "instruction": "Send the red block to the green disk - sorry, change that to the blue block.", "expected_object": "cube_blue"},
+  {"id": "new_red_focus", "instruction": "Ignore the blue cube. The red one is what I want in the green area.", "expected_object": "cube_red"},
+  {"id": "new_blue_focus", "instruction": "Ignore the red cube. The blue one is what I want in the green area.", "expected_object": "cube_blue"},
+  {"id": "new_red_contrast", "instruction": "The cube I want moved to the green goal is red, not blue.", "expected_object": "cube_red"},
+  {"id": "new_blue_contrast", "instruction": "The cube I want moved to the green goal is blue, not red.", "expected_object": "cube_blue"},
+  {"id": "new_missing_color", "instruction": "Please transfer the purple block into the green circle.", "expected_object": null},
+  {"id": "new_green_object", "instruction": "There should be a green block; carry it to the goal.", "expected_object": null},
+  {"id": "new_free_choice", "instruction": "Choose whichever cube you like and put it in the goal.", "expected_object": null},
+  {"id": "new_unresolved_reference", "instruction": "Carry that one to the green circle.", "expected_object": null},
+  {"id": "new_multiple_moves", "instruction": "First place red in the green area and then move blue there.", "expected_object": null},
+  {"id": "new_relative_target", "instruction": "Bring the red block next to the blue block.", "expected_object": null},
+  {"id": "new_no_positive_action", "instruction": "Don't pick anything up.", "expected_object": null},
+  {"id": "new_missing_target", "instruction": "Put the red cube in the blue target zone.", "expected_object": null}
+]

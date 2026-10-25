@@ -1,0 +1,32 @@
+[
+  {
+    "id": "evidence_red_correction",
+    "instruction": "Use blue for the green target. Correction: I meant red.",
+    "expected_object": "cube_red"
+  },
+  {
+    "id": "evidence_blue_correction",
+    "instruction": "Use red for the green target. Correction: I meant blue.",
+    "expected_object": "cube_blue"
+  },
+  {
+    "id": "new_red_revision",
+    "instruction": "I was about to ask for blue, but instead please carry the red block to the goal.",
+    "expected_object": "cube_red"
+  },
+  {
+    "id": "new_blue_revision",
+    "instruction": "I was about to ask for red, but instead please carry the blue block to the goal.",
+    "expected_object": "cube_blue"
+  },
+  {
+    "id": "new_red_contrast",
+    "instruction": "The cube I want moved to the green goal is red, not blue.",
+    "expected_object": "cube_red"
+  },
+  {
+    "id": "new_blue_contrast",
+    "instruction": "The cube I want moved to the green goal is blue, not red.",
+    "expected_object": "cube_blue"
+  }
+]

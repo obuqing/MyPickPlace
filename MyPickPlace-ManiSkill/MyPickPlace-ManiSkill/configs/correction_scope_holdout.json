@@ -1,0 +1,18 @@
+[
+  {"id":"scope_destination_red","instruction":"Send the red block to the violet target. Actually, select the green disk instead.","expected_object":"cube_red","category":"destination_only"},
+  {"id":"scope_destination_blue","instruction":"Send the blue block to the violet target. Actually, select the green disk instead.","expected_object":"cube_blue","category":"destination_only"},
+  {"id":"scope_object_red","instruction":"Carry blue to the green disk; correction: use the red block instead.","expected_object":"cube_red","category":"object_only"},
+  {"id":"scope_object_blue","instruction":"Carry red to the green disk; correction: use the blue block instead.","expected_object":"cube_blue","category":"object_only"},
+  {"id":"scope_both_red","instruction":"Take blue to the purple target. Scratch that, carry red onto the green disk.","expected_object":"cube_red","category":"both"},
+  {"id":"scope_both_blue","instruction":"Take red to the purple target. Scratch that, carry blue onto the green disk.","expected_object":"cube_blue","category":"both"},
+  {"id":"scope_nested_red","instruction":"Put blue on the green target. Actually, put red there. Correction: use the green disk instead.","expected_object":"cube_red","category":"nested_object_then_destination"},
+  {"id":"scope_nested_blue","instruction":"Put red on the green target. Actually, put blue there. Correction: use the green disk instead.","expected_object":"cube_blue","category":"nested_object_then_destination"},
+  {"id":"scope_unknown_object_inherited","instruction":"Send the orange block to the purple target. Actually, select the green disk instead.","expected_object":null,"category":"inherited_unavailable_object"},
+  {"id":"scope_unknown_object_replacement","instruction":"Carry blue to the green disk; correction: use the orange block instead.","expected_object":null,"category":"replacement_unavailable_object"},
+  {"id":"scope_unknown_target_replacement","instruction":"Send the red block to the green target. Actually, select the violet disk instead.","expected_object":null,"category":"replacement_unavailable_target"},
+  {"id":"scope_unknown_target_inherited","instruction":"Carry blue to the violet target; correction: use the red block instead.","expected_object":null,"category":"inherited_unavailable_target"},
+  {"id":"scope_ambiguous_inherited","instruction":"Carry a block to the purple target; correction: use the green disk instead.","expected_object":null,"category":"inherited_ambiguous_object"},
+  {"id":"scope_multiple_inherited","instruction":"Take both cubes to the purple target; correction: use the green disk instead.","expected_object":null,"category":"inherited_multiple_objects"},
+  {"id":"scope_both_unsupported","instruction":"Take red to the green disk. Scratch that, carry orange onto the violet target.","expected_object":null,"category":"both_unavailable"},
+  {"id":"scope_missing_object_after_cancel","instruction":"Move red to the green goal. Scratch that, move a block to the green goal.","expected_object":null,"category":"replacement_ambiguous_object"}
+]

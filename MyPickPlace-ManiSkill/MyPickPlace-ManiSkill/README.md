@@ -1,137 +1,72 @@
-# MyPickPlace-v1 for ManiSkill
+# MyPickPlace: Llama 3 + frozen SAC
 
-A minimal custom ManiSkill pick-and-place project designed as a clean base for
-connecting a later RL, imitation-learning, planning, or optimization framework.
+The Panda robot moves one red or blue cube onto a green tabletop goal. Local Llama 3
+extracts an English task; source evidence and scene validation compile a structured
+plan. Scripted control grasps/lifts, frozen SAC controls XYZ transport, and scripted
+control lowers/releases. Rejected instructions make no control steps.
 
-## Task
+## Run
 
-- Robot: Franka Panda
-- Object: red cube
-- Goal: green circular tabletop region
-- Default observation: state
-- Default controller: `pd_ee_delta_pose`
-- Success: cube center is inside the target region, cube is released, robot is static
-- Episode limit: 200 control steps
+Run commands from the outer workspace root. The existing `.venv` and portable
+Ollama installation are used by `run.cmd`.
 
-## 1. Create an environment
-
-Recommended:
-
-```bash
-conda create -n mypickplace python=3.11 -y
-conda activate mypickplace
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+```powershell
+.\run.cmd start_llama
+.\run.cmd run_instruction --executor rl --instruction "Place the blue cube on the green goal." --seed 81000 --output runs/my_rl_instruction
 ```
 
-If your CUDA/PyTorch setup needs a specific build, install PyTorch for your
-machine first, then install the remaining requirements.
+The RL checkpoint is `runs/carry_curriculum_40000/training/best_model.zip`.
+`--plan-only` skips execution. Explicit `--plan-file` replay is labeled offline.
+Only the validated two-stage planner is supported; it allows at most one evidence
+repair and no execution retry. See [LLM_RL.md](LLM_RL.md) for role corrections.
 
-## 2. Run from the project root
+## Evaluate and train
 
-```bash
-python scripts/inspect_env.py
+```powershell
+.\run.cmd evaluate_llm_rl --seed 80000 --output runs/my_llm_rl_evaluation
+.\run.cmd evaluate_carry --policy sac --model runs/carry_curriculum_40000/training/best_model.zip --episodes 10 --seed 82000 --output runs/my_carry_evaluation
+.\run.cmd check_planner_regressions --output runs/my_planner_regressions
+.\run.cmd evaluate_colors --output runs/my_scripted_evaluation
+.\run.cmd check_carry --output runs/my_interface_check
 ```
 
-This opens the scene and prints the action/observation interfaces.
+Use new output directories. Source-only planning cases live in
+`configs/planner_regression_cases.json`, so evaluation needs no deleted experiment.
+Prior scene seeds and instruction hashes are retained in `runs/scene_history.json`
+for novelty checks; rejected/unsupported instructions remain regression fixtures.
 
-Then run the smoke test:
+The working curriculum trainer and replay buffer are retained for further training:
 
-```bash
-python scripts/test_env.py
+```powershell
+.\run.cmd train_carry_curriculum --resume runs/carry_curriculum_40000 --steps 20000 --seed 200000 --output runs/carry_curriculum_60000
 ```
 
-The smoke test deliberately uses random actions. Its purpose is to verify that
-reset, stepping, reward, termination, and rendering all work. It is not expected
-to solve pick-and-place.
+`--steps` is the additional budget. See [CURRICULUM.md](CURRICULUM.md) for promotion
+criteria and diagnostics. This command starts new training only when you run it.
 
-## 3. Environment creation
+## Saved results
 
-```python
-import gymnasium as gym
-import mani_skill.envs
-import envs
+- `runs/carry_curriculum_40000`: successful trained model, replay buffer and report.
+- `runs/carry_generalization_200`: 100 unseen scene seeds per color, 200/200 placements.
+- `runs/correction_roles_verified/REPORT.md`: 52 integration outcomes and final
+  compiler replay of 100 real-model planning outputs. Raw unsuccessful intermediate
+  runs and superseded source snapshots have been removed.
+- `runs/llm_rl_generalization_videos/red.mp4` and `blue.mp4`: latest captioned real
+  Llama-to-RL videos, with new instruction wordings and scene seeds.
 
-env = gym.make(
-    "MyPickPlace-v1",
-    robot_uids="panda",
-    num_envs=1,
-    obs_mode="state",
-    control_mode="pd_ee_delta_pose",
-    reward_mode="dense",
-    render_mode="human",
-)
+Older successful checkpoints/videos are preserved. Failed checkpoints, experiment
+outputs, retired direct-planning prompts and one-off comparison scripts were removed.
+Cleanup inventory and preserved-file hashes: `runs/cleanup_failed_artifacts.json`.
 
-obs, info = env.reset(seed=0)
+## Checks and interface
+
+```powershell
+.\.venv\python.exe -m unittest discover -s MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/tests -q
+.\run.cmd test_env --steps 20
 ```
 
-Importing `envs` is important because that executes the `@register_env`
-decorator for `MyPickPlace-v1`.
-
-## 4. Algorithm boundary
-
-Put your method in `algorithms/` and keep this interface:
-
-```python
-class MyAlgorithm:
-    def reset(self):
-        ...
-
-    def act(self, observation):
-        action = ...
-        return action
-```
-
-The rollout code stays generic:
-
-```python
-obs, info = env.reset()
-algorithm.reset()
-
-while True:
-    action = algorithm.act(obs)
-    obs, reward, terminated, truncated, info = env.step(action)
-
-    if bool((terminated | truncated).item()):
-        break
-```
-
-This is intentional. Your algorithm should not access `env.unwrapped.cube`,
-`env.unwrapped.agent`, or other simulator internals. Everything the algorithm
-needs should come through observations.
-
-## 5. Project layout
-
-```text
-MyPickPlace-ManiSkill/
-├── envs/
-│   ├── __init__.py
-│   └── pick_place.py
-├── algorithms/
-│   ├── __init__.py
-│   └── policy.py
-├── scripts/
-│   ├── inspect_env.py
-│   ├── test_env.py
-│   └── run_policy.py
-├── configs/
-│   └── pick_place.yaml
-├── requirements.txt
-└── README.md
-```
-
-## 6. Recommended development order
-
-1. Run `inspect_env.py`.
-2. Run `test_env.py`.
-3. Inspect the exact state/action dimensions on your installed ManiSkill build.
-4. Replace `RandomPolicy` with your algorithm.
-5. Only after state-based control works, add RGB-D observations.
-6. Then add object/physics/camera randomization if your research requires it.
-
-## Notes
-
-This project follows the current ManiSkill custom-task API and the structure of
-the official PickCube task. ManiSkill is actively developed, so if a future
-release changes an API, compare `envs/pick_place.py` with the PickCube task from
-the installed version.
+`MyPickPlace-v1` has two cubes with randomized poses and a green goal. `MyCarrySkill-v1`
+exposes 52 numerical observation values and three normalized XYZ actions, a closed
+gripper and downward orientation. Carry arrival requires grasp plus 3D error <=2cm
+at an 18cm target height. Full placement also requires release and settling.
+The numerical state, controller scale, reward and current trained policy are retained.

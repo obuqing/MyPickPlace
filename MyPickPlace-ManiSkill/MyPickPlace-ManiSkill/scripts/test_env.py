@@ -1,4 +1,8 @@
 import argparse
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import gymnasium as gym
 import mani_skill.envs  # registers built-in ManiSkill tasks
@@ -39,6 +43,10 @@ def main():
         # Smoke test only: random actions do not intentionally solve the task.
         action = env.action_space.sample()
         obs, reward, terminated, truncated, info = env.step(action)
+
+        if args.render_mode == "rgb_array" and step == 0:
+            frame = env.render()
+            print(f"Rendered frame shape: {frame.shape}")
 
         if args.render_mode == "human":
             env.render()

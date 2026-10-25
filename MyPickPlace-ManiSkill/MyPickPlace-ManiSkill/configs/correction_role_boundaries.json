@@ -1,0 +1,10 @@
+[
+  {"id":"boundary_red_destination","instruction":"Transfer the red cube into the purple goal. Correction: choose the green target instead.","expected_object":"cube_red","category":"destination_only"},
+  {"id":"boundary_blue_destination","instruction":"Transfer the blue cube into the purple goal. Correction: choose the green target instead.","expected_object":"cube_blue","category":"destination_only"},
+  {"id":"boundary_unknown_inherited","instruction":"Transfer the orange cube into the purple goal. Correction: choose the green target instead.","expected_object":null,"category":"unknown_inherited_object"},
+  {"id":"boundary_unknown_destination","instruction":"Transfer the red cube into the green goal. Correction: choose the silver target instead.","expected_object":null,"category":"unknown_corrected_target"},
+  {"id":"boundary_relative_next","instruction":"Move red to the purple target. Correction: use next to green goal instead.","expected_object":null,"category":"relative_correction"},
+  {"id":"boundary_relative_left","instruction":"Move blue to the purple target. Correction: select left of green goal instead.","expected_object":null,"category":"relative_correction"},
+  {"id":"boundary_negated_target","instruction":"Move red to the purple target. Correction: use not the green goal instead.","expected_object":null,"category":"negative_target"},
+  {"id":"boundary_extra_task","instruction":"Move red to the purple target. Correction: use the green goal and move blue there too.","expected_object":null,"category":"additional_task"}
+]

@@ -1,0 +1,48 @@
+# Local environments and generated Python files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Successful experiments, checkpoints, videos and portable Ollama stay LOCAL.
+# Ignoring these paths does not delete their contents.
+/runs/
+/.cache/
+*.zip
+*.pkl
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.gguf
+*.mp4
+*.log
+*.pid
+
+# Personal IDE / operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local credentials; retain documented placeholder examples
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!*.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Workspace-only reference document and one-off cleanup utility
+/plan.pdf
+/cleanup_failed_runs.ps1

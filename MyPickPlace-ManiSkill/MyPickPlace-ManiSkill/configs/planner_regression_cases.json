@@ -1,0 +1,5302 @@
+[
+  {
+    "group": "development",
+    "id": "red_direct",
+    "instruction": "Pick up the red cube and place it in the green goal region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.007965832948684692,
+            0.09417766332626343,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.06129436567425728,
+            -0.12275852262973785,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14504477381706238,
+            -0.01770007610321045,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.005950148217380047,
+          -0.010825952515006065,
+          0.1719263195991516
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "development",
+    "id": "blue_direct",
+    "instruction": "Pick up the blue cube and place it in the green goal region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.007965832948684692,
+            0.09417766332626343,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.06129436567425728,
+            -0.12275852262973785,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14504477381706238,
+            -0.01770007610321045,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.005950148217380047,
+          -0.010825952515006065,
+          0.1719263195991516
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "development",
+    "id": "red_paraphrase",
+    "instruction": "Move the red block onto the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.07609664648771286,
+            0.13562734425067902,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.07553455233573914,
+            -0.13086235523223877,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13148491084575653,
+            -0.08595064282417297,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.011455113999545574,
+          -0.019082702696323395,
+          0.16851966083049774
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "development",
+    "id": "blue_paraphrase",
+    "instruction": "Move the blue block onto the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.07609664648771286,
+            0.13562734425067902,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.07553455233573914,
+            -0.13086235523223877,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13148491084575653,
+            -0.08595064282417297,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.011455113999545574,
+          -0.019082702696323395,
+          0.16851966083049774
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "development",
+    "id": "red_polite",
+    "instruction": "Could you put the red one in the marked green area, please?",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.0436868742108345,
+            0.0555984228849411,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.020599335432052612,
+            -0.09645925462245941,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13481241464614868,
+            -0.06077921390533447,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.014517570845782757,
+          0.02015799842774868,
+          0.16882626712322235
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "development",
+    "id": "blue_polite",
+    "instruction": "Could you put the blue one in the marked green area, please?",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.0436868742108345,
+            0.0555984228849411,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.020599335432052612,
+            -0.09645925462245941,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13481241464614868,
+            -0.06077921390533447,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.014517570845782757,
+          0.02015799842774868,
+          0.16882626712322235
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "development",
+    "id": "red_distractor",
+    "instruction": "Leave the blue cube alone and transfer the red cube to the green disk.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.06327507644891739,
+            0.10990488529205322,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.04976782947778702,
+            -0.11812813580036163,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13540302217006683,
+            0.07559655606746674,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.005263351835310459,
+          -0.015372632071375847,
+          0.14476077258586884
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "development",
+    "id": "blue_distractor",
+    "instruction": "Leave the red cube alone and transfer the blue cube to the green disk.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.06327507644891739,
+            0.10990488529205322,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.04976782947778702,
+            -0.11812813580036163,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13540302217006683,
+            0.07559655606746674,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.005263351835310459,
+          -0.015372632071375847,
+          0.14476077258586884
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "development",
+    "id": "red_correction",
+    "instruction": "Put the blue cube in the goal. Actually, use the red cube instead.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.04160298779606819,
+            -0.12370587885379791,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.0360594317317009,
+            0.06040792167186737,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12144024670124054,
+            -0.10033824294805527,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.003651414066553116,
+          -0.004208766855299473,
+          0.16450271010398865
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "development",
+    "id": "blue_correction",
+    "instruction": "Put the red cube in the goal. Actually, use the blue cube instead.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.04160298779606819,
+            -0.12370587885379791,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.0360594317317009,
+            0.06040792167186737,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12144024670124054,
+            -0.10033824294805527,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.003651414066553116,
+          -0.004208766855299473,
+          0.16450271010398865
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "development",
+    "id": "red_negation",
+    "instruction": "Move the red cube, not the blue one, into the green target region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.040515586733818054,
+            -0.13748615980148315,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.07376477122306824,
+            0.0942649245262146,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14590905606746674,
+            0.09126213192939758,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.003966117277741432,
+          0.007604220416396856,
+          0.16547468304634094
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "development",
+    "id": "blue_negation",
+    "instruction": "Move the blue cube, not the red one, into the green target region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.040515586733818054,
+            -0.13748615980148315,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.07376477122306824,
+            0.0942649245262146,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14590905606746674,
+            0.09126213192939758,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.003966117277741432,
+          0.007604220416396856,
+          0.16547468304634094
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "development",
+    "id": "missing_cube",
+    "instruction": "Put the yellow cube in the green goal region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.06671928614377975,
+            0.1464628279209137,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.0720338374376297,
+            -0.10113392770290375,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1302904635667801,
+            0.11489957571029663,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.004278590437024832,
+          0.001844154205173254,
+          0.16502085328102112
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "green_is_target",
+    "instruction": "Pick up the green cube and put it in the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.06671928614377975,
+            0.1464628279209137,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.0720338374376297,
+            -0.10113392770290375,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1302904635667801,
+            0.11489957571029663,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.004278590437024832,
+          0.001844154205173254,
+          0.16502085328102112
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "ambiguous_cube",
+    "instruction": "Put the cube in the green target region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09548171609640121,
+            0.058865293860435486,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.040994711220264435,
+            -0.09361235797405243,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14304769039154053,
+            -0.08724015951156616,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009123331867158413,
+          -0.0038373686838895082,
+          0.17257413268089294
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "two_objects",
+    "instruction": "Put both the red cube and the blue cube in the green goal region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09548171609640121,
+            0.058865293860435486,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.040994711220264435,
+            -0.09361235797405243,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14304769039154053,
+            -0.08724015951156616,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009123331867158413,
+          -0.0038373686838895082,
+          0.17257413268089294
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "stacking",
+    "instruction": "Stack the red cube on top of the blue cube.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08444425463676453,
+            0.05133143067359924,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            4.5999884605407715e-05,
+            -0.12430065870285034,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1342242956161499,
+            0.09224167466163635,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.014110783115029335,
+          0.015023532323539257,
+          0.15559886395931244
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "relative_placement",
+    "instruction": "Place the red cube to the right of the blue cube.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08444425463676453,
+            0.05133143067359924,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            4.5999884605407715e-05,
+            -0.12430065870285034,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1342242956161499,
+            0.09224167466163635,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.014110783115029335,
+          0.015023532323539257,
+          0.15559886395931244
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "negation_only",
+    "instruction": "Do not move the red cube.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.0287528857588768,
+            0.06311039626598358,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.04373084008693695,
+            -0.14462296664714813,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12601423263549805,
+            -0.14912478625774384,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0039098188281059265,
+          -0.026670318096876144,
+          0.15987646579742432
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "development",
+    "id": "raw_coordinates",
+    "instruction": "Move the blue cube to coordinates [2.0, 0.0, 0.5].",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.0287528857588768,
+            0.06311039626598358,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.04373084008693695,
+            -0.14462296664714813,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12601423263549805,
+            -0.14912478625774384,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0039098188281059265,
+          -0.026670318096876144,
+          0.15987646579742432
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_red_delivery",
+    "instruction": "Please deliver the red cube to the marked green destination.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09614727646112442,
+            0.10193604230880737,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.09234664589166641,
+            -0.14588896930217743,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1286270022392273,
+            -0.10850881040096283,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.017615128308534622,
+          -0.004361029248684645,
+          0.14221742749214172
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_blue_delivery",
+    "instruction": "Please deliver the blue cube to the marked green destination.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09614727646112442,
+            0.10193604230880737,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.09234664589166641,
+            -0.14588896930217743,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1286270022392273,
+            -0.10850881040096283,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.017615128308534622,
+          -0.004361029248684645,
+          0.14221742749214172
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_red_exclusive",
+    "instruction": "Only the red block should end up on the green disk; keep everything else where it is.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.04107823222875595,
+            -0.07645031809806824,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.02156386524438858,
+            0.13177905976772308,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13479730486869812,
+            -0.0770215094089508,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.001999299041926861,
+          -0.02975715883076191,
+          0.15229293704032898
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_blue_exclusive",
+    "instruction": "Only the blue block should end up on the green disk; keep everything else where it is.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.04107823222875595,
+            -0.07645031809806824,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.02156386524438858,
+            0.13177905976772308,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13479730486869812,
+            -0.0770215094089508,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.001999299041926861,
+          -0.02975715883076191,
+          0.15229293704032898
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_red_revision",
+    "instruction": "I was about to ask for blue, but instead please carry the red block to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.0924890860915184,
+            -0.13954539597034454,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.050073351711034775,
+            0.061509206891059875,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12783704698085785,
+            0.05836968123912811,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.022311078384518623,
+          0.004820582922548056,
+          0.18282565474510193
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_blue_revision",
+    "instruction": "I was about to ask for red, but instead please carry the blue block to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.0924890860915184,
+            -0.13954539597034454,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.050073351711034775,
+            0.061509206891059875,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12783704698085785,
+            0.05836968123912811,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.022311078384518623,
+          0.004820582922548056,
+          0.18282565474510193
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_red_late_change",
+    "instruction": "Send the blue block to the green disk - sorry, change that to the red block.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.07040193676948547,
+            0.05720534920692444,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.05774549022316933,
+            -0.0787111446261406,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13291572034358978,
+            0.0530732125043869,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.00871230661869049,
+          -0.057887185364961624,
+          0.16689532995224
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_blue_late_change",
+    "instruction": "Send the red block to the green disk - sorry, change that to the blue block.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.07040193676948547,
+            0.05720534920692444,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.05774549022316933,
+            -0.0787111446261406,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13291572034358978,
+            0.0530732125043869,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.00871230661869049,
+          -0.057887185364961624,
+          0.16689532995224
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_red_focus",
+    "instruction": "Ignore the blue cube. The red one is what I want in the green area.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09170585125684738,
+            0.14363795518875122,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.005753226578235626,
+            -0.10941638052463531,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13422895967960358,
+            -0.04855882376432419,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.02441735938191414,
+          -0.0011322461068630219,
+          0.1423947513103485
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_blue_focus",
+    "instruction": "Ignore the red cube. The blue one is what I want in the green area.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09170585125684738,
+            0.14363795518875122,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.005753226578235626,
+            -0.10941638052463531,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13422895967960358,
+            -0.04855882376432419,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.02441735938191414,
+          -0.0011322461068630219,
+          0.1423947513103485
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_red_contrast",
+    "instruction": "The cube I want moved to the green goal is red, not blue.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.016171276569366455,
+            0.10016917437314987,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.046307530254125595,
+            -0.08520862460136414,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12642908096313477,
+            -0.03853141516447067,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.013622114434838295,
+          0.0014365422539412975,
+          0.18755346536636353
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_blue_contrast",
+    "instruction": "The cube I want moved to the green goal is blue, not red.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.016171276569366455,
+            0.10016917437314987,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.046307530254125595,
+            -0.08520862460136414,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12642908096313477,
+            -0.03853141516447067,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.013622114434838295,
+          0.0014365422539412975,
+          0.18755346536636353
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_missing_color",
+    "instruction": "Please transfer the purple block into the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.047575417906045914,
+            -0.07309085875749588,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.055872511118650436,
+            0.08718475699424744,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15669439733028412,
+            0.13459309935569763,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009619898162782192,
+          -0.006920131854712963,
+          0.16992971301078796
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_green_object",
+    "instruction": "There should be a green block; carry it to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.047575417906045914,
+            -0.07309085875749588,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.055872511118650436,
+            0.08718475699424744,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15669439733028412,
+            0.13459309935569763,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009619898162782192,
+          -0.006920131854712963,
+          0.16992971301078796
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_free_choice",
+    "instruction": "Choose whichever cube you like and put it in the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.0012488588690757751,
+            -0.13566961884498596,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.030468888580799103,
+            0.08217352628707886,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12359900772571564,
+            0.06981492042541504,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.007704565301537514,
+          0.0008450577734038234,
+          0.16695716977119446
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_unresolved_reference",
+    "instruction": "Carry that one to the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.0012488588690757751,
+            -0.13566961884498596,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.030468888580799103,
+            0.08217352628707886,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12359900772571564,
+            0.06981492042541504,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.007704565301537514,
+          0.0008450577734038234,
+          0.16695716977119446
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_multiple_moves",
+    "instruction": "First place red in the green area and then move blue there.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.011737212538719177,
+            -0.09401433169841766,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.019934117794036865,
+            0.0718071460723877,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15338921546936035,
+            0.11040082573890686,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0004092082381248474,
+          -0.016353221610188484,
+          0.16879284381866455
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_relative_target",
+    "instruction": "Bring the red block next to the blue block.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.011737212538719177,
+            -0.09401433169841766,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.019934117794036865,
+            0.0718071460723877,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15338921546936035,
+            0.11040082573890686,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0004092082381248474,
+          -0.016353221610188484,
+          0.16879284381866455
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_no_positive_action",
+    "instruction": "Don't pick anything up.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.058013226836919785,
+            0.13094422221183777,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.021009311079978943,
+            -0.06244716793298721,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15835852921009064,
+            -0.14855672419071198,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0026031620800495148,
+          -0.009959106333553791,
+          0.18156802654266357
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "previous_holdout",
+    "id": "new_missing_target",
+    "instruction": "Put the red cube in the blue target zone.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.058013226836919785,
+            0.13094422221183777,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.021009311079978943,
+            -0.06244716793298721,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15835852921009064,
+            -0.14855672419071198,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0026031620800495148,
+          -0.009959106333553791,
+          0.18156802654266357
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_red_ring",
+    "instruction": "Set the red cube down inside the green ring.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.011836700141429901,
+            -0.05853886902332306,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08363264799118042,
+            0.05850781500339508,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1312132030725479,
+            -0.04176589101552963,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009220381267368793,
+          0.02321234531700611,
+          0.1760869175195694
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_blue_ring",
+    "instruction": "Set the blue cube down inside the green ring.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.011836700141429901,
+            -0.05853886902332306,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08363264799118042,
+            0.05850781500339508,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1312132030725479,
+            -0.04176589101552963,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009220381267368793,
+          0.02321234531700611,
+          0.1760869175195694
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_red_context",
+    "instruction": "Of the two cubes, take only the red cube to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.025923974812030792,
+            -0.08951254189014435,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.018013931810855865,
+            0.08031697571277618,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12141486257314682,
+            -0.0709967166185379,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0016174176707863808,
+          -0.010427800938487053,
+          0.16453732550144196
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_blue_context",
+    "instruction": "Of the two cubes, take only the blue cube to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.025923974812030792,
+            -0.08951254189014435,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.018013931810855865,
+            0.08031697571277618,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12141486257314682,
+            -0.0709967166185379,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0016174176707863808,
+          -0.010427800938487053,
+          0.16453732550144196
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_red_wait",
+    "instruction": "Put blue on the green marker. Wait, red should go there.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.053425587713718414,
+            -0.14829236268997192,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03890862315893173,
+            0.1375223994255066,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13950254023075104,
+            -0.030853919684886932,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0014259424060583115,
+          -0.007212306372821331,
+          0.1831590086221695
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_blue_wait",
+    "instruction": "Put red on the green marker. Wait, blue should go there.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.053425587713718414,
+            -0.14829236268997192,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03890862315893173,
+            0.1375223994255066,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13950254023075104,
+            -0.030853919684886932,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0014259424060583115,
+          -0.007212306372821331,
+          0.1831590086221695
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_red_exclusion",
+    "instruction": "Not the blue block: please put the red block in the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.055870722979307175,
+            -0.09351925551891327,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.09632554650306702,
+            0.11919508129358292,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14918206632137299,
+            0.02366006374359131,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0006334232166409492,
+          0.033226095139980316,
+          0.18220292031764984
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_blue_exclusion",
+    "instruction": "Not the red block: please put the blue block in the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.055870722979307175,
+            -0.09351925551891327,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.09632554650306702,
+            0.11919508129358292,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14918206632137299,
+            0.02366006374359131,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0006334232166409492,
+          0.033226095139980316,
+          0.18220292031764984
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_red_cancel",
+    "instruction": "I said blue, but cancel that request and send red to the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.03781351074576378,
+            -0.10605277121067047,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08392028510570526,
+            0.05609649419784546,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12841050326824188,
+            -0.09008713066577911,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.005938073620200157,
+          -0.029026638716459274,
+          0.17751115560531616
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_blue_cancel",
+    "instruction": "I said red, but cancel that request and send blue to the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.03781351074576378,
+            -0.10605277121067047,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08392028510570526,
+            0.05609649419784546,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12841050326824188,
+            -0.09008713066577911,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.005938073620200157,
+          -0.029026638716459274,
+          0.17751115560531616
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_red_keep",
+    "instruction": "The blue cube must stay put while you relocate the red cube to the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.047735683619976044,
+            -0.1312922090291977,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.018938779830932617,
+            0.09460771083831787,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13177141547203064,
+            0.13455456495285034,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.014665808528661728,
+          -0.0043601966463029385,
+          0.14109638333320618
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_blue_keep",
+    "instruction": "The red cube must stay put while you relocate the blue cube to the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.047735683619976044,
+            -0.1312922090291977,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.018938779830932617,
+            0.09460771083831787,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13177141547203064,
+            0.13455456495285034,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.014665808528661728,
+          -0.0043601966463029385,
+          0.14109638333320618
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_missing_pink",
+    "instruction": "Please put the pink cube onto the goal marker.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09296956658363342,
+            0.11352280527353287,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08462637662887573,
+            -0.0722338855266571,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14124208688735962,
+            0.06719322502613068,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.007557656615972519,
+          0.004901893436908722,
+          0.16535434126853943
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_green_piece",
+    "instruction": "Transfer the green piece into the marked goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09296956658363342,
+            0.11352280527353287,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08462637662887573,
+            -0.0722338855266571,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14124208688735962,
+            0.06719322502613068,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.007557656615972519,
+          0.004901893436908722,
+          0.16535434126853943
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_unspecified",
+    "instruction": "Select a block at random and transfer it into the green area.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.018037453293800354,
+            0.10264019668102264,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.06651320308446884,
+            -0.14836838841438293,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14483293890953064,
+            0.026485934853553772,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009055500850081444,
+          0.020944561809301376,
+          0.17671096324920654
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_pronoun",
+    "instruction": "Put it on the green disk.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.018037453293800354,
+            0.10264019668102264,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.06651320308446884,
+            -0.14836838841438293,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14483293890953064,
+            0.026485934853553772,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.009055500850081444,
+          0.020944561809301376,
+          0.17671096324920654
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_two_tasks",
+    "instruction": "Move the red block into the goal, followed by the blue block.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.012432791292667389,
+            -0.12550412118434906,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.04727620631456375,
+            0.08906891942024231,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1566282957792282,
+            0.09990362823009491,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0037078196182847023,
+          -0.017046326771378517,
+          0.15920564532279968
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_stack",
+    "instruction": "Make a tower by placing blue on top of red.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.012432791292667389,
+            -0.12550412118434906,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.04727620631456375,
+            0.08906891942024231,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1566282957792282,
+            0.09990362823009491,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0037078196182847023,
+          -0.017046326771378517,
+          0.15920564532279968
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_prohibition",
+    "instruction": "Please do not relocate either cube.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.061063095927238464,
+            0.09570479393005371,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.081296905875206,
+            -0.11117815226316452,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14147061109542847,
+            -0.10647240281105042,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0032728835940361023,
+          0.0018521316815167665,
+          0.16375267505645752
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "new_holdout",
+    "id": "third_bad_target",
+    "instruction": "Place the blue cube in the orange target square.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.061063095927238464,
+            0.09570479393005371,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.081296905875206,
+            -0.11117815226316452,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14147061109542847,
+            -0.10647240281105042,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0032728835940361023,
+          0.0018521316815167665,
+          0.16375267505645752
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_red_target",
+    "instruction": "Leave blue untouched; carry red onto the green disk.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.06951132416725159,
+            -0.13701073825359344,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.0038470402359962463,
+            0.13964563608169556,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13345679640769958,
+            -0.07684478908777237,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.005506616085767746,
+          0.004284231923520565,
+          0.1594986617565155
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_blue_target",
+    "instruction": "Leave red untouched; carry blue onto the green disk.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.06951132416725159,
+            -0.13701073825359344,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.0038470402359962463,
+            0.13964563608169556,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13345679640769958,
+            -0.07684478908777237,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.005506616085767746,
+          0.004284231923520565,
+          0.1594986617565155
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_red_correction",
+    "instruction": "Use blue for the green target. Correction: I meant red.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.015084236860275269,
+            0.07406094670295715,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.047471385449171066,
+            -0.10758335888385773,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14925968647003174,
+            -0.05130958557128906,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.01232956163585186,
+          0.031250592321157455,
+          0.16566357016563416
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_blue_correction",
+    "instruction": "Use red for the green target. Correction: I meant blue.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.015084236860275269,
+            0.07406094670295715,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.047471385449171066,
+            -0.10758335888385773,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14925968647003174,
+            -0.05130958557128906,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.01232956163585186,
+          0.031250592321157455,
+          0.16566357016563416
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_red_binding",
+    "instruction": "Transport the cube whose color is red into the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.009680435061454773,
+            -0.1132642924785614,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.07925098389387131,
+            0.10225717723369598,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14637775719165802,
+            -0.09997129440307617,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.006858887616544962,
+          0.01818554848432541,
+          0.17707455158233643
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_blue_binding",
+    "instruction": "Transport the cube whose color is blue into the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.009680435061454773,
+            -0.1132642924785614,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.07925098389387131,
+            0.10225717723369598,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14637775719165802,
+            -0.09997129440307617,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.006858887616544962,
+          0.01818554848432541,
+          0.17707455158233643
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_red_destination_revision",
+    "instruction": "Move the red cube to the blue target. Actually, use the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.011831514537334442,
+            -0.12574197351932526,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.007381126284599304,
+            0.09375728666782379,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12397745251655579,
+            -0.14809849858283997,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.007475867867469788,
+          0.02509465627372265,
+          0.1608923375606537
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_blue_destination_revision",
+    "instruction": "Move the blue cube to the blue target. Actually, use the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.011831514537334442,
+            -0.12574197351932526,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.007381126284599304,
+            0.09375728666782379,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12397745251655579,
+            -0.14809849858283997,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.007475867867469788,
+          0.02509465627372265,
+          0.1608923375606537
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_red_exclusion",
+    "instruction": "Not blue this time; put red in the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.031183667480945587,
+            0.07953699678182602,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.046175796538591385,
+            -0.051051780581474304,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15214116871356964,
+            -0.015337243676185608,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0029271841049194336,
+          0.008714986965060234,
+          0.17480745911598206
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_blue_exclusion",
+    "instruction": "Not red this time; put blue in the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.031183667480945587,
+            0.07953699678182602,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.046175796538591385,
+            -0.051051780581474304,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15214116871356964,
+            -0.015337243676185608,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0029271841049194336,
+          0.008714986965060234,
+          0.17480745911598206
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_red_stays",
+    "instruction": "Blue stays where it is, and red goes to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.037902362644672394,
+            0.10113070905208588,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03402567654848099,
+            -0.061281897127628326,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12122859060764313,
+            -0.1115390956401825,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0016064802184700966,
+          -0.010336332023143768,
+          0.15545059740543365
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_blue_stays",
+    "instruction": "Red stays where it is, and blue goes to the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.037902362644672394,
+            0.10113070905208588,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03402567654848099,
+            -0.061281897127628326,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12122859060764313,
+            -0.1115390956401825,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0016064802184700966,
+          -0.010336332023143768,
+          0.15545059740543365
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_missing_turquoise",
+    "instruction": "Move the turquoise cube into the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08928006887435913,
+            0.1322687268257141,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.00938408076763153,
+            -0.1445929855108261,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13469699025154114,
+            -0.030046679079532623,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.017514538019895554,
+          -3.0692273867316544e-05,
+          0.13195109367370605
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_magenta_target",
+    "instruction": "Place the blue cube in the magenta goal region.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08928006887435913,
+            0.1322687268257141,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.00938408076763153,
+            -0.1445929855108261,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.13469699025154114,
+            -0.030046679079532623,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.017514538019895554,
+          -3.0692273867316544e-05,
+          0.13195109367370605
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_either",
+    "instruction": "Use either cube for the green circle.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.02461889386177063,
+            -0.08257553726434708,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03796481341123581,
+            0.13969804346561432,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14707940816879272,
+            0.03226195275783539,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.014736257493495941,
+          0.004227165598422289,
+          0.18334689736366272
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_unbound",
+    "instruction": "The green goal is ready. Put that one there.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.02461889386177063,
+            -0.08257553726434708,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03796481341123581,
+            0.13969804346561432,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14707940816879272,
+            0.03226195275783539,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.014736257493495941,
+          0.004227165598422289,
+          0.18334689736366272
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_both",
+    "instruction": "Move both blocks into the goal, one after the other.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.046945180743932724,
+            0.1413210779428482,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.042001329362392426,
+            -0.053501106798648834,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.157044917345047,
+            0.13830554485321045,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.012198499403893948,
+          0.007986446842551231,
+          0.14704501628875732
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_relative",
+    "instruction": "Put blue to the left of red.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.046945180743932724,
+            0.1413210779428482,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.042001329362392426,
+            -0.053501106798648834,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.157044917345047,
+            0.13830554485321045,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.012198499403893948,
+          0.007986446842551231,
+          0.14704501628875732
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_negative",
+    "instruction": "Don't move blue or red.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08365953713655472,
+            0.14913547039031982,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03568882495164871,
+            -0.1486184000968933,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1428542137145996,
+            0.040165022015571594,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.01367318257689476,
+          0.019746962934732437,
+          0.1828460991382599
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "fresh_holdout",
+    "id": "evidence_coordinates",
+    "instruction": "Move red to coordinates [0.14, 0.0, 0.025].",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08365953713655472,
+            0.14913547039031982,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.03568882495164871,
+            -0.1486184000968933,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1428542137145996,
+            0.040165022015571594,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.01367318257689476,
+          0.019746962934732437,
+          0.1828460991382599
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_red_predicate",
+    "instruction": "The block destined for the green disk is red; blue stays still.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.004603028297424316,
+            -0.11685428023338318,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08184394240379333,
+            0.07791689038276672,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14265473186969757,
+            0.10288721323013306,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.00822055246680975,
+          -0.013127228245139122,
+          0.18888640403747559
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_blue_predicate",
+    "instruction": "The block destined for the green disk is blue; red stays still.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.004603028297424316,
+            -0.11685428023338318,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.08184394240379333,
+            0.07791689038276672,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14265473186969757,
+            0.10288721323013306,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.00822055246680975,
+          -0.013127228245139122,
+          0.18888640403747559
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_red_tail",
+    "instruction": "Take blue to the goal. Actually, red is the one I mean.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.004176206886768341,
+            -0.12159790098667145,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.027554593980312347,
+            0.13635796308517456,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14682480692863464,
+            -0.08489924669265747,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.017739351838827133,
+          -0.007201009429991245,
+          0.18672716617584229
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_blue_tail",
+    "instruction": "Take red to the goal. Actually, blue is the one I mean.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.004176206886768341,
+            -0.12159790098667145,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.027554593980312347,
+            0.13635796308517456,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.14682480692863464,
+            -0.08489924669265747,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.017739351838827133,
+          -0.007201009429991245,
+          0.18672716617584229
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_red_goal_change",
+    "instruction": "Take red to the blue marker; correction: choose the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.019329749047756195,
+            0.09852050989866257,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.04636175557971001,
+            -0.11691291630268097,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1200135201215744,
+            0.05397920310497284,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.00327852601185441,
+          -0.02351721189916134,
+          0.1619330197572708
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_blue_goal_change",
+    "instruction": "Take blue to the blue marker; correction: choose the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.019329749047756195,
+            0.09852050989866257,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.04636175557971001,
+            -0.11691291630268097,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1200135201215744,
+            0.05397920310497284,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.00327852601185441,
+          -0.02351721189916134,
+          0.1619330197572708
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_red_replacement",
+    "instruction": "I requested blue before, but instead move red into the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08601555973291397,
+            0.12667801976203918,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.04751448705792427,
+            -0.08512194454669952,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1246994286775589,
+            -0.10605248808860779,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.00041694752871990204,
+          0.016603516414761543,
+          0.16398650407791138
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_blue_replacement",
+    "instruction": "I requested red before, but instead move blue into the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08601555973291397,
+            0.12667801976203918,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.04751448705792427,
+            -0.08512194454669952,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1246994286775589,
+            -0.10605248808860779,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.00041694752871990204,
+          0.016603516414761543,
+          0.16398650407791138
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_red_repeat",
+    "instruction": "Move red to the green circle. Actually, use red for the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.03570595383644104,
+            0.08955499529838562,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.029588021337985992,
+            -0.11202384531497955,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15140965580940247,
+            0.13727343082427979,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.008251986466348171,
+          0.008808012120425701,
+          0.1684049814939499
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_blue_repeat",
+    "instruction": "Move blue to the green circle. Actually, use blue for the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.03570595383644104,
+            0.08955499529838562,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.029588021337985992,
+            -0.11202384531497955,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15140965580940247,
+            0.13727343082427979,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.008251986466348171,
+          0.008808012120425701,
+          0.1684049814939499
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_blue_exclusion",
+    "instruction": "Not red: use blue for the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.021076053380966187,
+            0.13392862677574158,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.024000562727451324,
+            -0.06695041060447693,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1253214329481125,
+            0.0780218094587326,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0007059946656227112,
+          -0.02239648811519146,
+          0.15596751868724823
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_blue"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_red_exclusion",
+    "instruction": "Not blue: use red for the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.021076053380966187,
+            0.13392862677574158,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.024000562727451324,
+            -0.06695041060447693,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1253214329481125,
+            0.0780218094587326,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.0007059946656227112,
+          -0.02239648811519146,
+          0.15596751868724823
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": "cube_red"
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_missing_beige",
+    "instruction": "Put the beige cube into the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.04643254727125168,
+            0.05170603096485138,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.009873539209365845,
+            -0.08036009967327118,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12027362734079361,
+            -0.0367467999458313,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0011208634823560715,
+          0.015420879237353802,
+          0.1799812912940979
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_missing_silver_goal",
+    "instruction": "The red cube should go in the silver target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.04643254727125168,
+            0.05170603096485138,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.009873539209365845,
+            -0.08036009967327118,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.12027362734079361,
+            -0.0367467999458313,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          -0.0011208634823560715,
+          0.015420879237353802,
+          0.1799812912940979
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_arbitrary_block",
+    "instruction": "Move any of the blocks into the goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09114778786897659,
+            -0.13556799292564392,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.023448370397090912,
+            0.1332453191280365,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15327738225460052,
+            0.12765538692474365,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.005815192591398954,
+          0.009285093285143375,
+          0.18548324704170227
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_unbound_that",
+    "instruction": "Put that on the green target.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.09114778786897659,
+            -0.13556799292564392,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            0.023448370397090912,
+            0.1332453191280365,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15327738225460052,
+            0.12765538692474365,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.005815192591398954,
+          0.009285093285143375,
+          0.18548324704170227
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_multiple",
+    "instruction": "Transfer red and blue together to the green goal.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.03601741045713425,
+            0.0551740825176239,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.02428140491247177,
+            -0.07343053072690964,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15782736241817474,
+            0.11183756589889526,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.003043095115572214,
+          -0.005950794089585543,
+          0.18247342109680176
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_relative",
+    "instruction": "Place red above blue.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            0.03601741045713425,
+            0.0551740825176239,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.02428140491247177,
+            -0.07343053072690964,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.15782736241817474,
+            0.11183756589889526,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.003043095115572214,
+          -0.005950794089585543,
+          0.18247342109680176
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_prohibition",
+    "instruction": "Do not move either object.",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08031544834375381,
+            0.07450707256793976,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.023473285138607025,
+            -0.05206744372844696,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1503743827342987,
+            -0.007572442293167114,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.01794789917767048,
+          0.013627782464027405,
+          0.17426809668540955
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  },
+  {
+    "group": "position_holdout",
+    "id": "span_coordinates",
+    "instruction": "Move blue to coordinates [0.14, 0, 0.025].",
+    "initial_scene": {
+      "objects": [
+        {
+          "id": "cube_red",
+          "color": "red",
+          "position": [
+            -0.08031544834375381,
+            0.07450707256793976,
+            0.02500000037252903
+          ]
+        },
+        {
+          "id": "cube_blue",
+          "color": "blue",
+          "position": [
+            -0.023473285138607025,
+            -0.05206744372844696,
+            0.02500000037252903
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "id": "goal",
+          "color": "green",
+          "position": [
+            0.1503743827342987,
+            -0.007572442293167114,
+            0.0010000000474974513
+          ]
+        }
+      ],
+      "robot": {
+        "tcp_position": [
+          0.01794789917767048,
+          0.013627782464027405,
+          0.17426809668540955
+        ],
+        "is_grasping": false
+      },
+      "available_skills": [
+        "reach",
+        "grasp",
+        "move",
+        "place"
+      ]
+    },
+    "expected_object": null
+  }
+]
