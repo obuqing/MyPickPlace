@@ -1,0 +1,14 @@
+[
+  {"id":"en_5cm","instruction":"Push the blue cube 5 cm along +X.","expected":"execute","distance_m":0.05},
+  {"id":"en_100mm","instruction":"Push the cube forward 100 mm.","expected":"execute","distance_m":0.10},
+  {"id":"zh_10cm","instruction":"把蓝色方块向前推10厘米。","expected":"execute","distance_m":0.10},
+  {"id":"zh_015m","instruction":"请将蓝色方块沿X轴正方向推0.15米。","expected":"execute","distance_m":0.15},
+  {"id":"too_far","instruction":"Push the blue cube 20 cm along +X.","expected":"reject"},
+  {"id":"wrong_color","instruction":"Push the red cube 10 cm along +X.","expected":"reject"},
+  {"id":"wrong_direction","instruction":"Push the blue cube 10 cm to the right.","expected":"reject"},
+  {"id":"missing_distance","instruction":"Push the blue cube forward.","expected":"reject"},
+  {"id":"missing_direction","instruction":"Push the blue cube 10 cm.","expected":"reject"},
+  {"id":"negation","instruction":"Do not push the blue cube 10 cm along +X.","expected":"reject"},
+  {"id":"multiple","instruction":"Push the blue cube 5 cm along +X, then push it another 5 cm.","expected":"reject"},
+  {"id":"wrong_action","instruction":"Pick up the blue cube and move it forward 10 cm.","expected":"reject"}
+]

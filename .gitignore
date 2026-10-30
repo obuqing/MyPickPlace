@@ -12,8 +12,10 @@ htmlcov/
 # Successful experiments, checkpoints, videos and portable Ollama stay LOCAL.
 # Ignoring these paths does not delete their contents.
 /runs/
+/work/
 /.cache/
 *.zip
+!MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/models/push/best_model.zip
 *.pkl
 *.pt
 *.pth

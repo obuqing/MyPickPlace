@@ -9,35 +9,71 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from algorithms.llm_planner import LLMPlanner, PlanningError, get_scene_state, validate_plan
+from algorithms.task_routing import RoutingError, select_skill, complete_log
 
 
-def main():
+def run_push(args, output, log):
+    if args.executor != 'rl':
+        raise PlanningError('Push uses the frozen SAC executor; use --executor rl or omit --executor')
+    from skills.push.push_instruction import execute
+    result=execute(args.instruction,output/'push',args.push_model,args.seed,args.plan_only,
+                   provider=args.provider,llm_model=args.model,base_url=args.base_url)
+    log.update(plan=result['plan'],control_steps=result['control_steps'],push_result=result,
+               rl_model=str(args.push_model.resolve()))
+    log['llm_exchange']=json.loads((output/'push/llm_exchange.json').read_text(encoding='utf-8'))
+    if result['planning_status']=='error' or result['execution_status']=='error':
+        log.update(status='error',error=result.get('error') or result['plan'].get('reason'))
+        return 1
+    if result['planning_status']=='reject':
+        log['status']='rejected'
+        return 2
+    if args.plan_only:
+        log['status']='planned'
+        return 0
+    log['execution']=dict(success=result['physical_success'],reason=result['metrics']['reason'],
+                          steps=result['control_steps'],controller='frozen_sac_xy',
+                          metrics=result['metrics'],video=str(output/'push/execution.mp4'))
+    log['rl_model_sha256']=result['checkpoint_sha256']
+    log['status']='completed' if result['physical_success'] else 'execution_failed'
+    return 0 if result['physical_success'] else 1
+
+
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--instruction", required=True)
+    parser.add_argument('--skill',choices=('auto','pick_place','push'),default='auto')
     parser.add_argument("--provider", choices=("ollama", "openai"))
     parser.add_argument("--model")
     parser.add_argument("--prompt-version", choices=("two_stage",))
     parser.add_argument("--base-url")
     parser.add_argument("--seed", type=int, default=1000)
     parser.add_argument("--plan-only", action="store_true")
-    parser.add_argument("--executor", choices=("scripted", "rl"), default="scripted")
+    parser.add_argument("--executor", choices=("scripted", "rl"), help='Default: scripted for pick_place, rl for push')
     parser.add_argument("--rl-model", type=Path, default=Path("runs/carry_curriculum_40000/training/best_model.zip"))
+    parser.add_argument('--push-model',type=Path,default=Path(__file__).resolve().parents[1]/'models/push/best_model.zip')
     parser.add_argument("--plan-file", type=Path, help="Explicit offline replay; never reported as an LLM run")
     parser.add_argument("--output", type=Path)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     output = args.output or Path("runs/instructions") / datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-    output.mkdir(parents=True, exist_ok=True)
+    output.mkdir(parents=True, exist_ok=False)
     log = {
         "instruction": args.instruction, "seed": args.seed,
         "source": "offline_plan_replay" if args.plan_file else "llm",
         "status": "starting", "execution": None,
         "executor": args.executor,
+        "skill": None, "environment_id": None, "control_steps": 0,
     }
     env, planner = None, None
     exit_code = 0
     try:
         if not args.instruction.strip():
             raise PlanningError("Instruction cannot be empty")
+        skill=select_skill(args.instruction,args.skill,offline=bool(args.plan_file))
+        args.executor=args.executor or ('rl' if skill=='push' else 'scripted')
+        log.update(skill=skill,executor=args.executor,
+                   environment_id='MyPushDistance-v1' if skill=='push' else ('MyCarrySkill-v1' if args.executor=='rl' else 'MyPickPlace-v1'))
+        if skill=='push':
+            return run_push(args,output,log)
         # Fail on missing model configuration before constructing the simulator.
         if not args.plan_file:
             planner = LLMPlanner(args.provider, args.model, args.base_url, prompt_version=args.prompt_version)
@@ -89,7 +125,10 @@ def main():
             log["status"] = "completed" if log["execution"]["success"] else "execution_failed"
             exit_code = 0 if log["execution"]["success"] else 1
             print(f"{log['status']}: {log['execution']['reason']}", flush=True)
-    except (PlanningError, OSError, json.JSONDecodeError) as exc:
+    except RoutingError as exc:
+        log.update(status='rejected',error=str(exc))
+        exit_code=2
+    except (PlanningError, OSError, ValueError, RuntimeError) as exc:
         log["status"] = "error"
         log["error"] = str(exc)
         print(f"Error: {exc}", file=sys.stderr)
@@ -98,7 +137,11 @@ def main():
         if planner is not None:
             log["llm_exchange"] = planner.exchange
         if env is not None:
+            base=getattr(env.unwrapped,'base',env)
+            count=getattr(base.unwrapped,'_elapsed_steps',None)
+            log['control_steps']=int(count.item()) if hasattr(count,'item') else (int(count) if count is not None else None)
             env.close()
+        complete_log(log,log['control_steps'])
         path = output / "run.json"
         path.write_text(json.dumps(log, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"Log: {path}", flush=True)

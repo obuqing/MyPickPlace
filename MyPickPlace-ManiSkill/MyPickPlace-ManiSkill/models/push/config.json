@@ -1,0 +1,46 @@
+{
+  "contract": {
+    "version": "push_xy_v2",
+    "direction": "+X",
+    "distances_m": [
+      0.05,
+      0.1,
+      0.15
+    ],
+    "action_dimension": 2,
+    "action_scale_m": 0.003,
+    "max_push_steps": 300,
+    "tolerance_m": 0.01,
+    "lateral_tolerance_m": 0.01,
+    "control": "scripted approach and retreat; SAC XY; fixed Z and orientation"
+  },
+  "additional_steps": 12000,
+  "seed": 1,
+  "stage_validation_seeds": [
+    210000,
+    210001
+  ],
+  "checkpoint_validation_seeds": [
+    200000,
+    200001
+  ],
+  "test_seeds": [
+    300000,
+    300001,
+    300002,
+    300003,
+    300004
+  ],
+  "caveat": "After inspecting this test set it is a development regression, not a fresh holdout.",
+  "algorithm": "SAC",
+  "network": [
+    128,
+    128
+  ],
+  "device": "cpu",
+  "learning_starts": 200,
+  "ent_coef": "auto_0.05",
+  "promotion": "Two consecutive stage validations with >=80% success",
+  "llm_used": false,
+  "resume": null
+}

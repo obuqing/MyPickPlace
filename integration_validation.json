@@ -1,0 +1,118 @@
+{
+  "date": "2026-10-30",
+  "base_commit": "630cc5a",
+  "unit_tests_passed": 115,
+  "cases": [
+    {
+      "case": "integration_push_zh",
+      "instruction": "把蓝色方块向前推10厘米。",
+      "seed": 540001,
+      "source": "llm",
+      "skill": "push",
+      "executor": "rl",
+      "status": "error",
+      "control_steps": 0,
+      "physical_success": null,
+      "reason": "LLM unavailable or invalid response; no fallback",
+      "metrics": null
+    },
+    {
+      "case": "integration_push_zh_v2",
+      "instruction": "把蓝色方块向前推10厘米。",
+      "seed": 540001,
+      "source": "llm",
+      "skill": "push",
+      "executor": "rl",
+      "status": "completed",
+      "control_steps": 194,
+      "physical_success": true,
+      "reason": "placed",
+      "metrics": {
+        "success": true,
+        "x_error_m": 0.003835300356149679,
+        "lateral_error_m": 0.007755637168884277,
+        "displacement_m": [
+          0.09616470336914062,
+          -0.007755637168884277,
+          -9.313225746154785E-08
+        ],
+        "invalid_motion": false,
+        "reason": "placed",
+        "seed": 540001,
+        "distance_m": 0.1,
+        "push_steps": 98,
+        "physical_steps": 194
+      }
+    },
+    {
+      "case": "integration_pick_place",
+      "instruction": "Put the blue cube in the green goal region.",
+      "seed": 1000,
+      "source": "llm",
+      "skill": "pick_place",
+      "executor": "scripted",
+      "status": "completed",
+      "control_steps": 215,
+      "physical_success": true,
+      "reason": "completed",
+      "metrics": null
+    },
+    {
+      "case": "integration_push_reject",
+      "instruction": "Push the blue cube forward 20 cm.",
+      "seed": 1000,
+      "source": "llm",
+      "skill": "push",
+      "executor": "rl",
+      "status": "rejected",
+      "control_steps": 0,
+      "physical_success": null,
+      "reason": "Distance must be 3..15 cm",
+      "metrics": null
+    },
+    {
+      "case": "integration_mixed",
+      "instruction": "Push the cube then pick it up.",
+      "seed": 1000,
+      "source": "llm",
+      "skill": null,
+      "executor": null,
+      "status": "rejected",
+      "control_steps": 0,
+      "physical_success": null,
+      "reason": "Mixed pushing and pick-and-place sequences are not supported; use separate commands",
+      "metrics": null
+    },
+    {
+      "case": "integration_offline",
+      "instruction": "Put the blue cube in the green goal region.",
+      "seed": 1000,
+      "source": "offline_plan_replay",
+      "skill": "pick_place",
+      "executor": "scripted",
+      "status": "planned",
+      "control_steps": 0,
+      "physical_success": null,
+      "reason": "Offline fixture: place the blue cube in the green goal region.",
+      "metrics": null
+    },
+    {
+      "case": "integration_plan_launcher",
+      "instruction": "Push the cube forward 5 cm.",
+      "seed": 1000,
+      "source": "llm",
+      "skill": "push",
+      "executor": "rl",
+      "status": "planned",
+      "control_steps": 0,
+      "physical_success": null,
+      "reason": "Source evidence and supported scene contract validated"
+    }
+  ],
+  "limitations": [
+    "Initial push attempt could not connect to stopped Ollama; retained as error, then restarted service.",
+    "Pick-place execution validated with scripted executor; carry SAC checkpoint unavailable.",
+    "Historical 58/60 push evaluation predates repository integration."
+  ],
+  "checkpoint_sha256": "d7e4e15f3794d07c982a6f038783f922e9dbb732aff1411bf34a5d0de756f7c5"
+}

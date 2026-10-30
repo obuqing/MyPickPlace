@@ -1,0 +1,10 @@
+[
+  {"id":"polite_mm","instruction":"Please push a blue block 50 millimeters in the positive X direction.","expected":"execute","distance_m":0.05},
+  {"id":"english_m","instruction":"Push a cube forward 0.10 meters.","expected":"execute","distance_m":0.10},
+  {"id":"chinese_explicit","instruction":"请把蓝色的立方体沿+X方向推动5厘米。","expected":"execute","distance_m":0.05},
+  {"id":"chinese_mm","instruction":"将方块向前推150毫米。","expected":"execute","distance_m":0.15},
+  {"id":"negative_distance","instruction":"Push the cube forward -10 cm.","expected":"reject"},
+  {"id":"chinese_negation","instruction":"不要把蓝色方块向前推5厘米。","expected":"reject"},
+  {"id":"correction","instruction":"Push the cube forward 5 cm, actually make it 10 cm.","expected":"reject"},
+  {"id":"extra_constraint","instruction":"Push the blue cube 10 cm along +X at high speed.","expected":"reject"}
+]
