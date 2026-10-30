@@ -4,7 +4,3 @@ torch
 numpy
 pyyaml
 stable-baselines3==2.9.0
-imageio
-imageio-ffmpeg
-scipy
-matplotlib

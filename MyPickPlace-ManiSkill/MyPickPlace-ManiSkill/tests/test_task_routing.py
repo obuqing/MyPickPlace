@@ -7,7 +7,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from algorithms.task_routing import select_skill, RoutingError
-from scripts.run_instruction import main
+from scripts.run_skills import main
 from skills.push.push_language import plan
 
 

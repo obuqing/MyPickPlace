@@ -21,4 +21,4 @@ The source was moved into `skills/push` during integration; imports and artifact
 paths changed. Training/control parameters and checkpoint weights did not.
 Unified-entry verification is recorded in the repository-root
 `integration_validation.json`. This checkpoint is small enough to track in Git;
-the ignore exception applies only to this file.
+it is already tracked, while the original repository ignore rules remain unchanged.
