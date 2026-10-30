@@ -1,5 +1,0 @@
--r MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/requirements.txt
-imageio
-imageio-ffmpeg
-scipy
-matplotlib
