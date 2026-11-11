@@ -1,0 +1,16 @@
+[
+  {"instruction": "Put the blue cube on the red cube.", "expected": [["blue", "red"]]},
+  {"instruction": "Stack the red cube on top of the green cube.", "expected": [["red", "green"]]},
+  {"instruction": "Place green on blue.", "expected": [["green", "blue"]]},
+  {"instruction": "Build a tower with green at the bottom, then red, then blue on top.", "expected": [["red", "green"], ["blue", "red"]]},
+  {"instruction": "Make a tower: blue on the bottom, green in the middle, red on top.", "expected": [["green", "blue"], ["red", "green"]]},
+  {"instruction": "Stack red on blue, and blue on green.", "expected": [["blue", "green"], ["red", "blue"]]},
+  {"instruction": "把红色方块放到绿色方块上。", "expected": [["red", "green"]]},
+  {"instruction": "把蓝色方块叠在红色方块上面。", "expected": [["blue", "red"]]},
+  {"instruction": "搭一个塔：绿色在最下面，然后红色，蓝色在最上面。", "expected": [["red", "green"], ["blue", "red"]]},
+  {"instruction": "Push the red cube forward 5 cm.", "expected": "reject"},
+  {"instruction": "Put the yellow cube on the red cube.", "expected": "reject"},
+  {"instruction": "Don't stack anything.", "expected": "reject"},
+  {"instruction": "Put the red cube on the red cube.", "expected": "reject"},
+  {"instruction": "Take the blue cube off the red cube.", "expected": "reject"}
+]
