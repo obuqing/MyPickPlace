@@ -59,6 +59,14 @@ Two physics details found in testing:
   although the cube does not move, so ManiSkill's velocity-based "static" test fails.
   For that case the executor checks position stability instead (< 2 mm over 0.5 s).
 
+Planner version 2 (current). Version 1 asked Llama for ordered robot steps; with llama3:8b it
+planned 11/14 test sentences correctly and failed all 3 "X at the bottom ... Z on top"
+sentences (e.g. it built blue-green-red for "green at the bottom, then red, then blue on top"),
+and the checks accepted those wrong but physically possible plans. Version 2 asks Llama only
+for the tower from bottom to top; code builds the steps (always bottom-up) and checks the tower
+against explicit words in the sentence ("X at the bottom / in the middle / on top", "X on Y",
+"X在最下面/中间/最上面", "把X放到Y上"). A contradiction is sent back to Llama once with the reason.
+
 Plan checks (code, not the LLM): only colours named in the sentence; every named colour
 used; no cube on itself; a cube with something on it cannot be picked; a cube can hold only
 one cube; 1-2 steps; reject other colours, pushing/removing, negations, conditions.

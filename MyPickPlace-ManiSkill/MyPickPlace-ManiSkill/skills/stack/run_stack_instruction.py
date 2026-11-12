@@ -48,6 +48,8 @@ def main():
         checked, audit = llm_plan(args.instruction)
     (args.output / "plan.json").write_text(json.dumps({"plan": checked, "audit": audit}, indent=2, ensure_ascii=False),
                                            encoding="utf-8")
+    if checked.get("tower"):
+        print("Tower (bottom -> top):", " / ".join(checked["tower"]))
     print("Plan:", checked["status"], [f"{s['pick']} -> {s['onto']}" for s in checked["steps"]], "|", checked["reason"])
     if checked["status"] != "execute":
         print("Nothing executed.")
