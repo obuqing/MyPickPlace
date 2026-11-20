@@ -1,6 +1,0 @@
-mani_skill
-gymnasium
-torch
-numpy
-pyyaml
-stable-baselines3==2.9.0
