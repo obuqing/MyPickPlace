@@ -1,14 +1,14 @@
 from copy import deepcopy
 import unittest
-from robot_skills.planning.llm_planner import Plan, PlanningError, SKILLS, validate_plan
-from robot_skills.planning.three_color_planner import validate_three_plan
-from robot_skills.planning.intent_planning import compile_intent
+from panda_skills.planning.llm_planner import Plan, PlanningError, SKILLS, validate_plan
+from panda_skills.planning.three_color_planner import validate_three_plan
+from panda_skills.planning.intent_planning import compile_intent
 from test_intent_planning import SCENE,intent
 
 
 class ThreeColorTests(unittest.TestCase):
     def test_reset_refreshes_contacts_without_issuing_a_control_action(self):
-        from robot_skills.envs.three_carry import ThreeCarryEnv
+        from panda_skills.envs.three_carry import ThreeCarryEnv
         class NoControl(ThreeCarryEnv):
             def _sim_step(self,action):
                 raise AssertionError('Preparing the scene must not issue a control action')

@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from robot_skills.envs.carry import CarrySkillEnv
+from panda_skills.envs.carry import CarrySkillEnv
 
 
 class RecordedCarryEnv(CarrySkillEnv):

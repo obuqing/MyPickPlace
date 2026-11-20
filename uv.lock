@@ -1322,7 +1322,7 @@ wheels = [
 ]
 
 [[package]]
-name = "robot-skills"
+name = "panda-skills"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

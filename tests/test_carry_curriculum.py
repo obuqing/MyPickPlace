@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
-from robot_skills.envs.carry import curriculum_target
-from robot_skills.training.carry_curriculum import promotion_streak, resume_cursor
+from panda_skills.envs.carry import curriculum_target
+from panda_skills.training.carry_curriculum import promotion_streak, resume_cursor
 
 
 class CurriculumTests(unittest.TestCase):

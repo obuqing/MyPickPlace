@@ -9,8 +9,8 @@ from unittest.mock import patch
 from urllib.error import HTTPError, URLError
 
 
-from robot_skills.planning.llm_planner import LLMPlanner, PLAN_SCHEMA, PlanningError, SKILLS, validate_plan
-from robot_skills.planning.intent_planning import LEGACY_INTENT_SCHEMA
+from panda_skills.planning.llm_planner import LLMPlanner, PLAN_SCHEMA, PlanningError, SKILLS, validate_plan
+from panda_skills.planning.intent_planning import LEGACY_INTENT_SCHEMA
 
 
 SCENE = {
@@ -91,7 +91,7 @@ class ProtocolTests(unittest.TestCase):
         return io.BytesIO(json.dumps(response).encode("utf-8"))
 
     def test_ollama_receives_instruction_and_extraction_schema_without_scene(self):
-        with patch("robot_skills.planning.llm_planner.urlopen", return_value=self.response()) as post:
+        with patch("panda_skills.planning.llm_planner.urlopen", return_value=self.response()) as post:
             plan = LLMPlanner().plan("Move the blue cube to the green goal.", SCENE)
         request = post.call_args.args[0]
         body = json.loads(request.data)
@@ -105,7 +105,7 @@ class ProtocolTests(unittest.TestCase):
     def test_openai_schema_and_credentials_not_in_log(self):
         with patch.dict(os.environ, {"LLM_API_KEY": "test-only-secret"}):
             planner = LLMPlanner("openai", "test-model")
-            with patch("robot_skills.planning.llm_planner.urlopen", return_value=self.response("openai")) as post:
+            with patch("panda_skills.planning.llm_planner.urlopen", return_value=self.response("openai")) as post:
                 planner.plan("Move the blue cube to the green goal.", SCENE)
         request = post.call_args.args[0]
         self.assertEqual(request.headers["Authorization"], "Bearer test-only-secret")
@@ -120,13 +120,13 @@ class ProtocolTests(unittest.TestCase):
         with patch.dict(os.environ, {"LLM_API_KEY": "test-key"}):
             for index, response in enumerate(responses):
                 provider = "ollama" if index < 3 else "openai"
-                with self.subTest(index=index), patch("robot_skills.planning.llm_planner.urlopen", return_value=response):
+                with self.subTest(index=index), patch("panda_skills.planning.llm_planner.urlopen", return_value=response):
                     with self.assertRaises(PlanningError):
                         LLMPlanner(provider, "test-model").plan("blue", SCENE)
 
     def test_connection_error_does_not_fallback(self):
         for error in (URLError("offline"), TimeoutError(), HTTPError("test", 401, "Unauthorized", {}, None)):
-            with self.subTest(error=error), patch("robot_skills.planning.llm_planner.urlopen", side_effect=error) as post:
+            with self.subTest(error=error), patch("panda_skills.planning.llm_planner.urlopen", side_effect=error) as post:
                 with self.assertRaises(PlanningError):
                     LLMPlanner().plan("blue", SCENE)
                 self.assertEqual(post.call_count, 1)

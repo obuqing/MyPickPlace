@@ -7,7 +7,7 @@ import time
 import gymnasium as gym
 import numpy as np
 
-from robot_skills.envs.carry import CONTRACT, InitializationError
+from panda_skills.envs.carry import CONTRACT, InitializationError
 
 
 def evaluate(policy, episodes=10, seed=1000, output=None, max_target_distance=None):

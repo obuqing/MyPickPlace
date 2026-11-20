@@ -7,14 +7,14 @@ import json
 from pathlib import Path
 import time
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
+import panda_skills.envs  # noqa: F401  (registers custom envs)
 import imageio.v2 as imageio
 import torch
 from stable_baselines3 import SAC
-from robot_skills.training.carry_evaluation import evaluate
-from robot_skills.envs.carry import InitializationError, CONTRACT
-from robot_skills.envs.recording import RecordedCarryEnv
-from robot_skills.provenance import used_scene_seeds
+from panda_skills.training.carry_evaluation import evaluate
+from panda_skills.envs.carry import InitializationError, CONTRACT
+from panda_skills.envs.recording import RecordedCarryEnv
+from panda_skills.provenance import used_scene_seeds
 
 
 def record(policy, color, seed, directory):
@@ -81,8 +81,8 @@ def main():
         digest = hashlib.sha256(model_path.read_bytes()).hexdigest()
         project = Path(__file__).resolve().parents[1]
         code = {}
-        for name in ('scripts/validate_carry_generalization.py', 'src/robot_skills/training/carry_evaluation.py', 'src/robot_skills/envs/carry.py',
-                     'src/robot_skills/envs/pick_place.py', 'src/robot_skills/policies/scripted_pick_place.py'):
+        for name in ('scripts/validate_carry_generalization.py', 'src/panda_skills/training/carry_evaluation.py', 'src/panda_skills/envs/carry.py',
+                     'src/panda_skills/envs/pick_place.py', 'src/panda_skills/policies/scripted_pick_place.py'):
             data = (project/name).read_bytes()
             destination = root/'frozen'/name
             destination.parent.mkdir(parents=True, exist_ok=True)

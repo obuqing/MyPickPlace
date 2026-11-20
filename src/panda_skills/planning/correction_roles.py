@@ -1,7 +1,7 @@
 """Conservative source binding for a single destination-only replacement."""
 from copy import deepcopy
 import re
-from robot_skills.planning.source_spans import correction_candidates, source_tokens
+from panda_skills.planning.source_spans import correction_candidates, source_tokens
 
 
 GOAL = (r'(?:the\s+)?(?:(?!(?:next|left|right|above|below|under|behind|beside|between|near|not|no|both|all)\b)'

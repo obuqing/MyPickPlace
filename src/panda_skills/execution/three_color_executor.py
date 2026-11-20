@@ -1,8 +1,8 @@
 """Three-object execution with disturbance auditing for both non-target objects."""
 import numpy as np
-from robot_skills.planning.three_color_planner import validate_three_plan
-from robot_skills.planning.llm_planner import PlanningError
-from robot_skills.envs.carry import CONTRACT, InitializationError
+from panda_skills.planning.three_color_planner import validate_three_plan
+from panda_skills.planning.llm_planner import PlanningError
+from panda_skills.envs.carry import CONTRACT, InitializationError
 
 
 def execute_three_plan(env,plan,policy):

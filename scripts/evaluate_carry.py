@@ -2,9 +2,9 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
-from robot_skills.training.carry_evaluation import evaluate
-from robot_skills.policies.scripted_carry import ScriptedCarryPolicy
+import panda_skills.envs  # noqa: F401  (registers custom envs)
+from panda_skills.training.carry_evaluation import evaluate
+from panda_skills.policies.scripted_carry import ScriptedCarryPolicy
 
 
 def main():

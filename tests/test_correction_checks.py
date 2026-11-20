@@ -1,7 +1,7 @@
 from copy import deepcopy
 import unittest
-from robot_skills.planning.correction_checks import bind_role_correction, independent_task_evidence
-from robot_skills.planning.intent_planning import compile_intent
+from panda_skills.planning.correction_checks import bind_role_correction, independent_task_evidence
+from panda_skills.planning.intent_planning import compile_intent
 from test_intent_planning import SCENE,intent
 
 

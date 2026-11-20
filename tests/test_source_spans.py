@@ -3,8 +3,8 @@
 from copy import deepcopy
 import unittest
 
-from robot_skills.planning.intent_planning import compile_intent, IntentFormatError
-from robot_skills.planning.source_spans import source_tokens, correction_candidates
+from panda_skills.planning.intent_planning import compile_intent, IntentFormatError
+from panda_skills.planning.source_spans import source_tokens, correction_candidates
 from test_intent_planning import SCENE, intent
 from span_fixtures import spanned, referenced
 

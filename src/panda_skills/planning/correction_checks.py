@@ -1,8 +1,8 @@
 """Source-role edits and independent-task checks; never consult scene availability."""
 from copy import deepcopy
 import re
-from robot_skills.planning.correction_roles import ORIGINAL, OBJECT_TO_INHERITED_GOAL, bind_destination_only
-from robot_skills.planning.source_spans import correction_candidates, source_tokens
+from panda_skills.planning.correction_roles import ORIGINAL, OBJECT_TO_INHERITED_GOAL, bind_destination_only
+from panda_skills.planning.source_spans import correction_candidates, source_tokens
 
 
 NAMED_OBJECT = r'(?P<object>(?:the\s+)?(?P<color>[a-z]+)(?:\s+(?:cube|block|piece|item|object))?)'

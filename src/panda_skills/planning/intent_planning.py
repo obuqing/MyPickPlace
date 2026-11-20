@@ -2,11 +2,11 @@
 
 import re
 
-from robot_skills.planning.source_spans import (
+from panda_skills.planning.source_spans import (
     SPAN_INTENT_SCHEMA, SPAN_SYSTEM_PROMPT, SpanEvidenceError, SpanFormatError,
     materialize_intent,
 )
-from robot_skills.planning.correction_checks import bind_role_correction, independent_task_evidence
+from panda_skills.planning.correction_checks import bind_role_correction, independent_task_evidence
 
 
 def _object(properties):

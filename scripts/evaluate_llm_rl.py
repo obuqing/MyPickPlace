@@ -8,14 +8,14 @@ from pathlib import Path
 import time
 from urllib.request import urlopen
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
+import panda_skills.envs  # noqa: F401  (registers custom envs)
 import numpy as np
 import torch
 from stable_baselines3 import SAC
-from robot_skills.planning.llm_planner import LLMPlanner, PlanningError
-from robot_skills.execution.rl_plan_executor import execute_rl_plan
-from robot_skills.envs.carry import CarrySkillEnv
-from robot_skills.provenance import parameter_digest, used_scene_seeds
+from panda_skills.planning.llm_planner import LLMPlanner, PlanningError
+from panda_skills.execution.rl_plan_executor import execute_rl_plan
+from panda_skills.envs.carry import CarrySkillEnv
+from panda_skills.provenance import parameter_digest, used_scene_seeds
 
 
 class AuditedEnv(CarrySkillEnv):
@@ -60,12 +60,12 @@ def main():
         frozen.mkdir()
         (frozen/'cases.json').write_bytes(cases_data)
         (frozen/'initial_prompt.txt').write_text(planner.system_prompt, encoding='utf-8')
-        from robot_skills.planning.intent_planning import INTENT_SYSTEM_PROMPT
+        from panda_skills.planning.intent_planning import INTENT_SYSTEM_PROMPT
         (frozen/'repair_prompt.txt').write_text(INTENT_SYSTEM_PROMPT, encoding='utf-8')
         hashes = {}
-        for name in ('scripts/evaluate_llm_rl.py', 'src/robot_skills/execution/rl_plan_executor.py', 'src/robot_skills/planning/llm_planner.py',
-                     'src/robot_skills/planning/intent_planning.py','src/robot_skills/planning/source_spans.py','src/robot_skills/planning/correction_roles.py','src/robot_skills/planning/correction_checks.py','src/robot_skills/envs/carry.py',
-                     'src/robot_skills/envs/pick_place.py','src/robot_skills/policies/scripted_pick_place.py'):
+        for name in ('scripts/evaluate_llm_rl.py', 'src/panda_skills/execution/rl_plan_executor.py', 'src/panda_skills/planning/llm_planner.py',
+                     'src/panda_skills/planning/intent_planning.py','src/panda_skills/planning/source_spans.py','src/panda_skills/planning/correction_roles.py','src/panda_skills/planning/correction_checks.py','src/panda_skills/envs/carry.py',
+                     'src/panda_skills/envs/pick_place.py','src/panda_skills/policies/scripted_pick_place.py'):
             data = (project/name).read_bytes()
             destination = frozen/'code'/name
             destination.parent.mkdir(parents=True,exist_ok=True)

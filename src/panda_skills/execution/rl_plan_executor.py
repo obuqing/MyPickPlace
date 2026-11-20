@@ -1,7 +1,7 @@
 """Validated symbolic task -> scripted grasp -> frozen SAC carry -> scripted release."""
 import numpy as np
-from robot_skills.planning.llm_planner import PlanningError, validate_plan
-from robot_skills.envs.carry import CONTRACT, InitializationError
+from panda_skills.planning.llm_planner import PlanningError, validate_plan
+from panda_skills.envs.carry import CONTRACT, InitializationError
 
 
 def execute_rl_plan(environment, plan, policy):

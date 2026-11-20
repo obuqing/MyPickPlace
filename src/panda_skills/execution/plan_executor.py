@@ -1,7 +1,7 @@
 """Execute a validated single-object plan using the existing scripted controller."""
 
-from robot_skills.planning.llm_planner import PlanningError, get_scene_state, validate_plan
-from robot_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
+from panda_skills.planning.llm_planner import PlanningError, get_scene_state, validate_plan
+from panda_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
 
 
 PHASE_SKILL = {

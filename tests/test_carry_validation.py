@@ -3,8 +3,8 @@ import io
 import unittest
 
 import numpy as np
-from robot_skills.training.carry_validation import selection_score
-from robot_skills.training.carry_callbacks import Progress
+from panda_skills.training.carry_validation import selection_score
+from panda_skills.training.carry_callbacks import Progress
 
 
 def summary(carry=0,placed=0,initialized=10,distance=.2):

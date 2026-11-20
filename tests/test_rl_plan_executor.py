@@ -2,9 +2,9 @@ from copy import deepcopy
 import unittest
 from unittest.mock import Mock
 
-from robot_skills.planning.llm_planner import Plan, PlanningError, SKILLS
-from robot_skills.execution.rl_plan_executor import execute_rl_plan
-from robot_skills.envs.carry import CarrySkillEnv
+from panda_skills.planning.llm_planner import Plan, PlanningError, SKILLS
+from panda_skills.execution.rl_plan_executor import execute_rl_plan
+from panda_skills.envs.carry import CarrySkillEnv
 
 
 SCENE = {'objects':[{'id':'cube_red','position':[0,-.1,.025]},

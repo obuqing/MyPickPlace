@@ -1,8 +1,8 @@
-# Robot Skills: Panda manipulation on ManiSkill
+# Panda Skills: Panda manipulation on ManiSkill
 
 A collection of Panda robot skills built on [ManiSkill 3](https://github.com/haosulab/ManiSkill)
 (installed as a dependency; not vendored). Skills are registered by name in
-`robot_skills.skills`, so new ones can be added without restructuring the project.
+`panda_skills.skills`, so new ones can be added without restructuring the project.
 
 | Skill | Env id | How it's solved |
 |---|---|---|
@@ -25,7 +25,7 @@ Run every command from the project root.
 
 ```
 pyproject.toml, uv.lock   dependencies (managed by uv)
-src/robot_skills/         installable package
+src/panda_skills/         installable package
   skills.py               skill registry (name -> env id + default env settings)
   envs/                   custom Gym/ManiSkill envs (importing registers them)
   policies/               scripted and base policies
@@ -41,9 +41,9 @@ docs/                     per-skill notes
 tests/
 ```
 
-To add a skill: add an env under `src/robot_skills/envs/` (or reuse a ManiSkill
+To add a skill: add an env under `src/panda_skills/envs/` (or reuse a ManiSkill
 task), call `register_skill(...)` in `skills.py`, and train it with an existing trainer,
-for example `robot_skills.training.ppo` for any GPU-vectorized ManiSkill env.
+for example `panda_skills.training.ppo` for any GPU-vectorized ManiSkill env.
 
 ## Peg insertion (PPO)
 

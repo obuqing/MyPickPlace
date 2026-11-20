@@ -31,8 +31,8 @@ import torch
 from torch import nn
 from torch.distributions.normal import Normal
 
-from robot_skills.paths import CHECKPOINTS_DIR
-from robot_skills.skills import get_skill
+from panda_skills.paths import CHECKPOINTS_DIR
+from panda_skills.skills import get_skill
 
 
 @dataclass

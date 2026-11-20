@@ -7,10 +7,10 @@ from pathlib import Path
 
 import torch
 from stable_baselines3 import SAC
-from robot_skills.envs.three_carry import ThreeCarryEnv
-from robot_skills.planning.three_color_planner import ThreeColorPlanner
-from robot_skills.execution.three_color_executor import execute_three_plan
-from robot_skills.planning.llm_planner import PlanningError
+from panda_skills.envs.three_carry import ThreeCarryEnv
+from panda_skills.planning.three_color_planner import ThreeColorPlanner
+from panda_skills.execution.three_color_executor import execute_three_plan
+from panda_skills.planning.llm_planner import PlanningError
 
 
 class CommandEnv(ThreeCarryEnv):

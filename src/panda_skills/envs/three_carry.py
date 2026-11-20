@@ -10,9 +10,9 @@ import gymnasium as gym
 from gymnasium import spaces
 from gymnasium.envs.registration import register
 import numpy as np
-from robot_skills.envs.three_pick_place import COLORS
-from robot_skills.envs.carry import CarrySkillEnv, CONTRACT, InitializationError, curriculum_target
-from robot_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
+from panda_skills.envs.three_pick_place import COLORS
+from panda_skills.envs.carry import CarrySkillEnv, CONTRACT, InitializationError, curriculum_target
+from panda_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
 
 
 class ThreeCarryEnv(CarrySkillEnv):
@@ -120,11 +120,11 @@ class ThreeCarryEnv(CarrySkillEnv):
         return state
 
     def current_scene(self):
-        from robot_skills.planning.llm_planner import get_scene_state
+        from panda_skills.planning.llm_planner import get_scene_state
         scene=get_scene_state(self._obs)
         scene['objects'].append(dict(id='cube_yellow',color='yellow',
             position=array(self._obs['extra']['yellow_cube_pose'])[:3].tolist()))
         return scene
 
 
-register(id='MyCarryThree-v1',entry_point='robot_skills.envs.three_carry:ThreeCarryEnv')
+register(id='MyCarryThree-v1',entry_point='panda_skills.envs.three_carry:ThreeCarryEnv')

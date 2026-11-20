@@ -6,7 +6,7 @@ from unittest.mock import Mock, patch
 import torch
 
 
-from robot_skills.envs.carry import CarrySkillEnv, InitializationError, carry_outcome
+from panda_skills.envs.carry import CarrySkillEnv, InitializationError, carry_outcome
 
 
 class CarryOutcomeTests(unittest.TestCase):
@@ -53,7 +53,7 @@ class CarryOutcomeTests(unittest.TestCase):
             return np.zeros(7)
 
         policy.act.side_effect = fail
-        with patch("robot_skills.envs.carry.ScriptedPickPlacePolicy", return_value=policy):
+        with patch("panda_skills.envs.carry.ScriptedPickPlacePolicy", return_value=policy):
             with self.assertRaises(InitializationError) as error:
                 env.reset(seed=123)
         self.assertEqual(len(env.initializations), 1)

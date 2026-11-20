@@ -8,10 +8,10 @@ import unittest
 from unittest.mock import patch
 
 
-from robot_skills.planning.intent_planning import INTENT_SCHEMA, LEGACY_INTENT_SCHEMA, IntentFormatError, compile_intent
-from robot_skills.planning.llm_planner import LLMPlanner, PlanningError
+from panda_skills.planning.intent_planning import INTENT_SCHEMA, LEGACY_INTENT_SCHEMA, IntentFormatError, compile_intent
+from panda_skills.planning.llm_planner import LLMPlanner, PlanningError
 from span_fixtures import spanned, referenced
-from robot_skills.planning.source_spans import schema_for_source
+from panda_skills.planning.source_spans import schema_for_source
 
 
 SCENE = {
@@ -132,7 +132,7 @@ class IntentTests(unittest.TestCase):
         response = {"done": True, "done_reason": "stop", "message": {"content": json.dumps(payload)}}
         with patch.dict(os.environ, {}, clear=True):
             planner = LLMPlanner()
-            with patch("robot_skills.planning.llm_planner.urlopen", return_value=io.BytesIO(json.dumps(response).encode())) as post:
+            with patch("panda_skills.planning.llm_planner.urlopen", return_value=io.BytesIO(json.dumps(response).encode())) as post:
                 plan = planner.plan("Move red cube to green goal.", SCENE)
         body = json.loads(post.call_args.args[0].data)
         self.assertEqual(body["format"], LEGACY_INTENT_SCHEMA)
@@ -155,7 +155,7 @@ class IntentTests(unittest.TestCase):
         second["tasks"][0]["object_evidence"] = "The cube to move to the green goal is blue"
         second = referenced(second, text)
         planner = LLMPlanner(provider="ollama", prompt_version="two_stage")
-        with patch("robot_skills.planning.llm_planner.urlopen", side_effect=[self.response(first), self.response(second)]) as post:
+        with patch("panda_skills.planning.llm_planner.urlopen", side_effect=[self.response(first), self.response(second)]) as post:
             plan = planner.plan(text, SCENE)
         self.assertEqual(plan.object_id, "cube_blue")
         self.assertEqual(post.call_count, 2)
@@ -174,14 +174,14 @@ class IntentTests(unittest.TestCase):
         text = "Don't choose red. Move the cube to green goal."
         repaired = referenced(extracted, text)
         planner = LLMPlanner(provider="ollama", prompt_version="two_stage")
-        with patch("robot_skills.planning.llm_planner.urlopen", side_effect=[self.response(extracted), self.response(repaired)]) as post:
+        with patch("panda_skills.planning.llm_planner.urlopen", side_effect=[self.response(extracted), self.response(repaired)]) as post:
             plan = planner.plan(text, SCENE)
         self.assertEqual(plan.status, "reject")
         self.assertEqual(post.call_count, 2)
 
     def test_unsupported_object_is_not_retried_into_supported_color(self):
         planner = LLMPlanner(provider="ollama", prompt_version="two_stage")
-        with patch("robot_skills.planning.llm_planner.urlopen", return_value=self.response(intent("yellow"))) as post:
+        with patch("panda_skills.planning.llm_planner.urlopen", return_value=self.response(intent("yellow"))) as post:
             plan = planner.plan("Move yellow cube to green goal.", SCENE)
         self.assertEqual(plan.status, "reject")
         self.assertEqual(post.call_count, 1)
@@ -192,7 +192,7 @@ class IntentTests(unittest.TestCase):
         extracted["tasks"][0]["object_evidence"] = "the cube"
         text = "Don't choose red. Move the cube to green goal."
         planner = LLMPlanner(provider="ollama", prompt_version="two_stage")
-        with patch("robot_skills.planning.llm_planner.urlopen", side_effect=[self.response(extracted), TimeoutError()]):
+        with patch("panda_skills.planning.llm_planner.urlopen", side_effect=[self.response(extracted), TimeoutError()]):
             with self.assertRaises(PlanningError):
                 planner.plan(text, SCENE)
         self.assertEqual(len(planner.exchange["attempts"]), 2)

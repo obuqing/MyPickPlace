@@ -9,7 +9,7 @@ from gymnasium.envs.registration import register
 import numpy as np
 from scipy.spatial.transform import Rotation
 
-from robot_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
+from panda_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
 
 
 CONTRACT = {
@@ -132,7 +132,7 @@ class CarrySkillEnv(gym.Env):
         return self.initialize_grasp()
 
     def current_scene(self):
-        from robot_skills.planning.llm_planner import get_scene_state
+        from panda_skills.planning.llm_planner import get_scene_state
         return get_scene_state(self._obs)
 
     def initialize_grasp(self, object_id=None):
@@ -275,4 +275,4 @@ class CarrySkillEnv(gym.Env):
         self.base.close()
 
 
-register(id="MyCarrySkill-v1", entry_point="robot_skills.envs.carry:CarrySkillEnv")
+register(id="MyCarrySkill-v1", entry_point="panda_skills.envs.carry:CarrySkillEnv")

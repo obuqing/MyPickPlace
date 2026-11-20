@@ -6,7 +6,7 @@ import subprocess
 import time
 from urllib.request import urlopen
 
-from robot_skills.paths import PROJECT_ROOT
+from panda_skills.paths import PROJECT_ROOT
 
 
 def version():

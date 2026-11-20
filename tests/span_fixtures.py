@@ -1,6 +1,6 @@
 """Test-only builders; production positions always come from model extraction."""
 
-from robot_skills.planning.source_spans import source_tokens, correction_candidates, source_references
+from panda_skills.planning.source_spans import source_tokens, correction_candidates, source_references
 
 
 def spanned(extracted, text, scope=None):

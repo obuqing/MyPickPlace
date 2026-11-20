@@ -3,7 +3,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from robot_skills.provenance import used_scene_seeds
+from panda_skills.provenance import used_scene_seeds
 
 
 class SeedAuditTests(unittest.TestCase):

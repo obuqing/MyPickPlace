@@ -1,5 +1,5 @@
 [project]
-name = "robot-skills"
+name = "panda-skills"
 version = "0.1.0"
 description = "Panda manipulation skills on ManiSkill: LLM-planned pick/place + carry, and RL-trained skills such as peg insertion."
 readme = "README.md"
@@ -26,7 +26,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/robot_skills"]
+packages = ["src/panda_skills"]
 
 # CUDA 12.8 wheels (required for RTX 50-series / Blackwell GPUs).
 [[tool.uv.index]]

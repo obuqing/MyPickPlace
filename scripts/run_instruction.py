@@ -7,7 +7,7 @@ from pathlib import Path
 import sys
 
 
-from robot_skills.planning.llm_planner import LLMPlanner, PlanningError, get_scene_state, validate_plan
+from panda_skills.planning.llm_planner import LLMPlanner, PlanningError, get_scene_state, validate_plan
 
 
 def main():
@@ -42,8 +42,8 @@ def main():
             planner = LLMPlanner(args.provider, args.model, args.base_url, prompt_version=args.prompt_version)
         import gymnasium as gym
         import mani_skill.envs
-        import robot_skills.envs
-        from robot_skills.execution.plan_executor import execute_plan
+        import panda_skills.envs
+        from panda_skills.execution.plan_executor import execute_plan
 
         if args.executor == "rl":
             env = gym.make("MyCarrySkill-v1")
@@ -77,7 +77,7 @@ def main():
                 import hashlib
                 import torch
                 from stable_baselines3 import SAC
-                from robot_skills.execution.rl_plan_executor import execute_rl_plan
+                from panda_skills.execution.rl_plan_executor import execute_rl_plan
                 torch.set_num_threads(1)
                 log["rl_model"] = str(args.rl_model.resolve())
                 log["rl_model_sha256"] = hashlib.sha256(args.rl_model.read_bytes()).hexdigest()

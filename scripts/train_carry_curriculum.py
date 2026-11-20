@@ -8,15 +8,15 @@ import subprocess
 import sys
 import time
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
+import panda_skills.envs  # noqa: F401  (registers custom envs)
 import gymnasium as gym
 import numpy as np
 import torch
 from stable_baselines3 import SAC
 from stable_baselines3.common.monitor import Monitor
-from robot_skills.training.carry_validation import CarryValidation
-from robot_skills.training.carry_callbacks import Progress
-from robot_skills.training.carry_curriculum import STAGES, promotion_streak, resume_cursor
+from panda_skills.training.carry_validation import CarryValidation
+from panda_skills.training.carry_callbacks import Progress
+from panda_skills.training.carry_curriculum import STAGES, promotion_streak, resume_cursor
 
 
 def main():
@@ -52,8 +52,8 @@ def main():
                   error_convention='target_minus_object; negative Z means object too high')
     (root/'config.json').write_text(json.dumps(config, indent=2), encoding='utf-8')
     hashes = {}
-    for name in ('src/robot_skills/envs/carry.py', 'src/robot_skills/envs/pick_place.py', 'src/robot_skills/policies/scripted_pick_place.py',
-                 'src/robot_skills/training/carry_evaluation.py', 'src/robot_skills/training/carry_validation.py',
+    for name in ('src/panda_skills/envs/carry.py', 'src/panda_skills/envs/pick_place.py', 'src/panda_skills/policies/scripted_pick_place.py',
+                 'src/panda_skills/training/carry_evaluation.py', 'src/panda_skills/training/carry_validation.py',
                  'scripts/train_carry_curriculum.py', 'scripts/train_carry.py', 'scripts/evaluate_carry.py'):
         data = (project/name).read_bytes()
         dest = root/'frozen'/name

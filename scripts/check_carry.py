@@ -8,8 +8,8 @@ import gymnasium as gym
 import numpy as np
 from stable_baselines3.common.env_checker import check_env
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
-from robot_skills.envs.carry import CONTRACT
+import panda_skills.envs  # noqa: F401  (registers custom envs)
+from panda_skills.envs.carry import CONTRACT
 
 
 def main():

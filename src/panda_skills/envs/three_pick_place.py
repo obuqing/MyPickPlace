@@ -4,7 +4,7 @@ import sapien
 from mani_skill.utils.building import actors
 from mani_skill.utils.registration import register_env
 from mani_skill.utils.structs.pose import Pose
-from robot_skills.envs.pick_place import MyPickPlaceEnv
+from panda_skills.envs.pick_place import MyPickPlaceEnv
 
 COLORS = ('red','blue','yellow')
 

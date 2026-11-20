@@ -5,7 +5,7 @@ import gymnasium as gym
 import mani_skill.envs  # registers built-in ManiSkill tasks
 
 # Importing envs registers MyPickPlace-v1.
-import robot_skills.envs  # noqa: F401
+import panda_skills.envs  # noqa: F401
 
 
 def main():

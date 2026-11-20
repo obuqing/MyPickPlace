@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 from urllib.request import urlopen
 
-from robot_skills.planning.llm_planner import LLMPlanner, PlanningError
+from panda_skills.planning.llm_planner import LLMPlanner, PlanningError
 
 
 def main():
@@ -25,7 +25,7 @@ def main():
     manifest = dict(model=model,prompt_sha256=planner.prompt_sha256,repair_prompt_sha256=planner.repair_prompt_sha256,
                     max_repairs=1,physical_execution=False,code_sha256={})
     project=Path(__file__).resolve().parents[1]
-    for name in ('src/robot_skills/planning/llm_planner.py','src/robot_skills/planning/intent_planning.py','src/robot_skills/planning/source_spans.py','src/robot_skills/planning/correction_roles.py','src/robot_skills/planning/correction_checks.py','scripts/check_planner_regressions.py'):
+    for name in ('src/panda_skills/planning/llm_planner.py','src/panda_skills/planning/intent_planning.py','src/panda_skills/planning/source_spans.py','src/panda_skills/planning/correction_roles.py','src/panda_skills/planning/correction_checks.py','scripts/check_planner_regressions.py'):
         data=(project/name).read_bytes()
         destination=root/'frozen'/name
         destination.parent.mkdir(parents=True,exist_ok=True)

@@ -8,15 +8,15 @@ import imageio.v2 as imageio
 import numpy as np
 import torch
 from stable_baselines3 import SAC
-from robot_skills.planning.llm_planner import Plan,SKILLS,PlanningError
-from robot_skills.planning.three_color_planner import ThreeColorPlanner,validate_three_plan
-from robot_skills.execution.three_color_executor import execute_three_plan
-from robot_skills.execution.rl_plan_executor import execute_rl_plan
-from robot_skills.envs.three_carry import ThreeCarryEnv
-from robot_skills.envs.carry import CarrySkillEnv
-from robot_skills.envs.three_pick_place import COLORS
-from robot_skills.provenance import parameter_digest, used_scene_seeds
-from robot_skills.video import CaptionWriter
+from panda_skills.planning.llm_planner import Plan,SKILLS,PlanningError
+from panda_skills.planning.three_color_planner import ThreeColorPlanner,validate_three_plan
+from panda_skills.execution.three_color_executor import execute_three_plan
+from panda_skills.execution.rl_plan_executor import execute_rl_plan
+from panda_skills.envs.three_carry import ThreeCarryEnv
+from panda_skills.envs.carry import CarrySkillEnv
+from panda_skills.envs.three_pick_place import COLORS
+from panda_skills.provenance import parameter_digest, used_scene_seeds
+from panda_skills.video import CaptionWriter
 
 CASES=[
  dict(id='direct_red',instruction='Move the red cube to the green goal.',expected='cube_red'),
@@ -95,8 +95,8 @@ def main():
             initial_prompt_sha256=planner.prompt_sha256,repair_prompt_sha256=planner.repair_prompt_sha256,
             max_repairs=1,execution_retries=0,reset_contact_refresh_physics_steps=1,
             preflight_setup_diagnosis_retained=preflight.exists(),code_sha256={})
-        for name in ('src/robot_skills/envs/three_pick_place.py','src/robot_skills/envs/three_carry.py','src/robot_skills/planning/three_color_planner.py',
-                     'src/robot_skills/execution/three_color_executor.py','scripts/evaluate_three_colors.py'):
+        for name in ('src/panda_skills/envs/three_pick_place.py','src/panda_skills/envs/three_carry.py','src/panda_skills/planning/three_color_planner.py',
+                     'src/panda_skills/execution/three_color_executor.py','scripts/evaluate_three_colors.py'):
             data=(project/name).read_bytes()
             target=root/'experiment_source'/name
             target.parent.mkdir(parents=True,exist_ok=True)

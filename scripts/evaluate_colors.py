@@ -10,8 +10,8 @@ import imageio.v2 as imageio
 import mani_skill.envs
 import numpy as np
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
-from robot_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
+import panda_skills.envs  # noqa: F401  (registers custom envs)
+from panda_skills.policies.scripted_pick_place import ScriptedPickPlacePolicy, array
 
 
 def main():

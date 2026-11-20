@@ -7,11 +7,11 @@ from pathlib import Path
 import imageio.v2 as imageio
 import torch
 from stable_baselines3 import SAC
-from robot_skills.planning.llm_planner import LLMPlanner, PlanningError
-from robot_skills.execution.rl_plan_executor import execute_rl_plan
-from robot_skills.envs.recording import RecordedCarryEnv
-from robot_skills.provenance import parameter_digest, used_scene_seeds
-from robot_skills.video import CaptionWriter
+from panda_skills.planning.llm_planner import LLMPlanner, PlanningError
+from panda_skills.execution.rl_plan_executor import execute_rl_plan
+from panda_skills.envs.recording import RecordedCarryEnv
+from panda_skills.provenance import parameter_digest, used_scene_seeds
+from panda_skills.video import CaptionWriter
 
 
 CASES = [
@@ -65,9 +65,9 @@ def main():
             scope='New wording and scene positions within the existing task/physics distribution')
         project=Path(__file__).resolve().parents[1]
         manifest['code_sha256']={}
-        for name in ('scripts/record_llm_rl_generalization.py','src/robot_skills/planning/llm_planner.py','src/robot_skills/planning/intent_planning.py',
-                     'src/robot_skills/planning/source_spans.py','src/robot_skills/planning/correction_roles.py','src/robot_skills/planning/correction_checks.py',
-                     'src/robot_skills/execution/rl_plan_executor.py','src/robot_skills/envs/carry.py','src/robot_skills/envs/pick_place.py','src/robot_skills/policies/scripted_pick_place.py'):
+        for name in ('scripts/record_llm_rl_generalization.py','src/panda_skills/planning/llm_planner.py','src/panda_skills/planning/intent_planning.py',
+                     'src/panda_skills/planning/source_spans.py','src/panda_skills/planning/correction_roles.py','src/panda_skills/planning/correction_checks.py',
+                     'src/panda_skills/execution/rl_plan_executor.py','src/panda_skills/envs/carry.py','src/panda_skills/envs/pick_place.py','src/panda_skills/policies/scripted_pick_place.py'):
             data=(project/name).read_bytes()
             target=root/'frozen'/name
             target.parent.mkdir(parents=True,exist_ok=True)

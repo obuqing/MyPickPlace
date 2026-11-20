@@ -3,8 +3,8 @@
 import gymnasium as gym
 import mani_skill.envs
 
-import robot_skills.envs  # noqa: F401  (registers MyPickPlace-v1)
-from robot_skills.policies.base import RandomPolicy
+import panda_skills.envs  # noqa: F401  (registers MyPickPlace-v1)
+from panda_skills.policies.base import RandomPolicy
 
 
 def main():

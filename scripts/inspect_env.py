@@ -3,7 +3,7 @@
 import gymnasium as gym
 import mani_skill.envs
 
-import robot_skills.envs  # noqa: F401  (registers MyPickPlace-v1)
+import panda_skills.envs  # noqa: F401  (registers MyPickPlace-v1)
 
 
 env = gym.make(

@@ -6,8 +6,8 @@ import unittest
 
 PROJECT = Path(__file__).resolve().parents[1]
 
-from robot_skills.planning.llm_planner import LLMPlanner, PROMPTS
-from robot_skills.planning.planning_metrics import summarize
+from panda_skills.planning.llm_planner import LLMPlanner, PROMPTS
+from panda_skills.planning.planning_metrics import summarize
 
 
 class ComparisonTests(unittest.TestCase):

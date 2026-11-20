@@ -8,7 +8,7 @@ import shutil
 import subprocess
 import sys
 
-from robot_skills.paths import SCRIPTS_DIR
+from panda_skills.paths import SCRIPTS_DIR
 
 
 def selection_score(summary):

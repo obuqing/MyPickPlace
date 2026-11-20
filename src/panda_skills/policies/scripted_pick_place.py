@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from robot_skills.policies.base import Policy
+from panda_skills.policies.base import Policy
 
 
 def array(tensor):

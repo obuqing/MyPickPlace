@@ -1,7 +1,7 @@
 """Three-color-only symbolic boundary; original two-color validation is unchanged."""
 import math
-from robot_skills.planning.llm_planner import LLMPlanner, PlanningError, Plan, PLAN_SCHEMA, SKILLS
-from robot_skills.planning.intent_planning import compile_intent, IntentFormatError
+from panda_skills.planning.llm_planner import LLMPlanner, PlanningError, Plan, PLAN_SCHEMA, SKILLS
+from panda_skills.planning.intent_planning import compile_intent, IntentFormatError
 
 
 def validate_three_plan(payload, scene):

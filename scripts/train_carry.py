@@ -14,10 +14,10 @@ import torch
 from stable_baselines3 import SAC
 from stable_baselines3.common.monitor import Monitor
 
-import robot_skills.envs  # noqa: F401  (registers custom envs)
-from robot_skills.envs.carry import CONTRACT
-from robot_skills.training.carry_validation import CarryValidation
-from robot_skills.training.carry_callbacks import Progress, parameters
+import panda_skills.envs  # noqa: F401  (registers custom envs)
+from panda_skills.envs.carry import CONTRACT
+from panda_skills.training.carry_validation import CarryValidation
+from panda_skills.training.carry_callbacks import Progress, parameters
 
 
 def main():

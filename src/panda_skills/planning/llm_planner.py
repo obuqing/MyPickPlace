@@ -8,11 +8,11 @@ from dataclasses import asdict, dataclass
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from robot_skills.planning.intent_planning import (
+from panda_skills.planning.intent_planning import (
     INTENT_SCHEMA, INTENT_SYSTEM_PROMPT, LEGACY_INTENT_SCHEMA, LEGACY_INTENT_SYSTEM_PROMPT,
     IntentFormatError, compile_intent,
 )
-from robot_skills.planning.source_spans import source_tokens, correction_candidates, schema_for_source, source_references
+from panda_skills.planning.source_spans import source_tokens, correction_candidates, schema_for_source, source_references
 
 
 SKILLS = ["reach", "grasp", "move", "place"]
