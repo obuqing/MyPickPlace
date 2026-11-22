@@ -1,0 +1,6 @@
+[
+  {"id":"stationary_keep_blue","instruction":"The blue cube must stay put while you relocate the red cube to the green circle.","expected_object":"cube_red","category":"stationary_contrast"},
+  {"id":"stationary_keep_red","instruction":"The red cube must stay put while you relocate the blue cube to the green circle.","expected_object":"cube_blue","category":"stationary_contrast"},
+  {"id":"stationary_two_moves","instruction":"First place red in the green area and then move blue there.","expected_object":null,"category":"omitted_second_move"},
+  {"id":"stationary_only","instruction":"Both cubes must stay put. Do not move either cube.","expected_object":null,"category":"negation_only"}
+]

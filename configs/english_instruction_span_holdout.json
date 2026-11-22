@@ -1,0 +1,22 @@
+[
+  {"id":"span_red_predicate","instruction":"The block destined for the green disk is red; blue stays still.","expected_object":"cube_red"},
+  {"id":"span_blue_predicate","instruction":"The block destined for the green disk is blue; red stays still.","expected_object":"cube_blue"},
+  {"id":"span_red_tail","instruction":"Take blue to the goal. Actually, red is the one I mean.","expected_object":"cube_red"},
+  {"id":"span_blue_tail","instruction":"Take red to the goal. Actually, blue is the one I mean.","expected_object":"cube_blue"},
+  {"id":"span_red_goal_change","instruction":"Take red to the blue marker; correction: choose the green target.","expected_object":"cube_red"},
+  {"id":"span_blue_goal_change","instruction":"Take blue to the blue marker; correction: choose the green target.","expected_object":"cube_blue"},
+  {"id":"span_red_replacement","instruction":"I requested blue before, but instead move red into the green goal.","expected_object":"cube_red"},
+  {"id":"span_blue_replacement","instruction":"I requested red before, but instead move blue into the green goal.","expected_object":"cube_blue"},
+  {"id":"span_red_repeat","instruction":"Move red to the green circle. Actually, use red for the green target.","expected_object":"cube_red"},
+  {"id":"span_blue_repeat","instruction":"Move blue to the green circle. Actually, use blue for the green target.","expected_object":"cube_blue"},
+  {"id":"span_blue_exclusion","instruction":"Not red: use blue for the green goal.","expected_object":"cube_blue"},
+  {"id":"span_red_exclusion","instruction":"Not blue: use red for the green goal.","expected_object":"cube_red"},
+  {"id":"span_missing_beige","instruction":"Put the beige cube into the green goal.","expected_object":null},
+  {"id":"span_missing_silver_goal","instruction":"The red cube should go in the silver target.","expected_object":null},
+  {"id":"span_arbitrary_block","instruction":"Move any of the blocks into the goal.","expected_object":null},
+  {"id":"span_unbound_that","instruction":"Put that on the green target.","expected_object":null},
+  {"id":"span_multiple","instruction":"Transfer red and blue together to the green goal.","expected_object":null},
+  {"id":"span_relative","instruction":"Place red above blue.","expected_object":null},
+  {"id":"span_prohibition","instruction":"Do not move either object.","expected_object":null},
+  {"id":"span_coordinates","instruction":"Move blue to coordinates [0.14, 0, 0.025].","expected_object":null}
+]

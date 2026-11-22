@@ -1,0 +1,22 @@
+[
+  {"id":"third_red_ring","instruction":"Set the red cube down inside the green ring.","expected_object":"cube_red"},
+  {"id":"third_blue_ring","instruction":"Set the blue cube down inside the green ring.","expected_object":"cube_blue"},
+  {"id":"third_red_context","instruction":"Of the two cubes, take only the red cube to the goal.","expected_object":"cube_red"},
+  {"id":"third_blue_context","instruction":"Of the two cubes, take only the blue cube to the goal.","expected_object":"cube_blue"},
+  {"id":"third_red_wait","instruction":"Put blue on the green marker. Wait, red should go there.","expected_object":"cube_red"},
+  {"id":"third_blue_wait","instruction":"Put red on the green marker. Wait, blue should go there.","expected_object":"cube_blue"},
+  {"id":"third_red_exclusion","instruction":"Not the blue block: please put the red block in the green goal.","expected_object":"cube_red"},
+  {"id":"third_blue_exclusion","instruction":"Not the red block: please put the blue block in the green goal.","expected_object":"cube_blue"},
+  {"id":"third_red_cancel","instruction":"I said blue, but cancel that request and send red to the green goal.","expected_object":"cube_red"},
+  {"id":"third_blue_cancel","instruction":"I said red, but cancel that request and send blue to the green goal.","expected_object":"cube_blue"},
+  {"id":"third_red_keep","instruction":"The blue cube must stay put while you relocate the red cube to the green circle.","expected_object":"cube_red"},
+  {"id":"third_blue_keep","instruction":"The red cube must stay put while you relocate the blue cube to the green circle.","expected_object":"cube_blue"},
+  {"id":"third_missing_pink","instruction":"Please put the pink cube onto the goal marker.","expected_object":null},
+  {"id":"third_green_piece","instruction":"Transfer the green piece into the marked goal.","expected_object":null},
+  {"id":"third_unspecified","instruction":"Select a block at random and transfer it into the green area.","expected_object":null},
+  {"id":"third_pronoun","instruction":"Put it on the green disk.","expected_object":null},
+  {"id":"third_two_tasks","instruction":"Move the red block into the goal, followed by the blue block.","expected_object":null},
+  {"id":"third_stack","instruction":"Make a tower by placing blue on top of red.","expected_object":null},
+  {"id":"third_prohibition","instruction":"Please do not relocate either cube.","expected_object":null},
+  {"id":"third_bad_target","instruction":"Place the blue cube in the orange target square.","expected_object":null}
+]

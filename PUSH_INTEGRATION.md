@@ -2,8 +2,8 @@
 
 ## Contribution and integration
 
-All files from Buqing Ou's commit `630cc5a` are preserved unchanged, including
-`run.cmd`, `scripts/run_instruction.py`, `requirements.txt`, and `.gitignore`.
+The original pick-and-place entry points and dependencies are preserved,
+including `run.cmd`, `scripts/run_instruction.py`, and `requirements.txt`.
 The combined interface is an additional `scripts/run_skills.py` entry with its
 own `run-skills.cmd` launcher and `requirements-push.txt`. Existing commands
 continue to use the original files. Use the commands below for the new entry.

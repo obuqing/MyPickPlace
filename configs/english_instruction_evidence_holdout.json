@@ -1,0 +1,22 @@
+[
+  {"id":"evidence_red_target","instruction":"Leave blue untouched; carry red onto the green disk.","expected_object":"cube_red"},
+  {"id":"evidence_blue_target","instruction":"Leave red untouched; carry blue onto the green disk.","expected_object":"cube_blue"},
+  {"id":"evidence_red_correction","instruction":"Use blue for the green target. Correction: I meant red.","expected_object":"cube_red"},
+  {"id":"evidence_blue_correction","instruction":"Use red for the green target. Correction: I meant blue.","expected_object":"cube_blue"},
+  {"id":"evidence_red_binding","instruction":"Transport the cube whose color is red into the green circle.","expected_object":"cube_red"},
+  {"id":"evidence_blue_binding","instruction":"Transport the cube whose color is blue into the green circle.","expected_object":"cube_blue"},
+  {"id":"evidence_red_destination_revision","instruction":"Move the red cube to the blue target. Actually, use the green goal.","expected_object":"cube_red"},
+  {"id":"evidence_blue_destination_revision","instruction":"Move the blue cube to the blue target. Actually, use the green goal.","expected_object":"cube_blue"},
+  {"id":"evidence_red_exclusion","instruction":"Not blue this time; put red in the green target.","expected_object":"cube_red"},
+  {"id":"evidence_blue_exclusion","instruction":"Not red this time; put blue in the green target.","expected_object":"cube_blue"},
+  {"id":"evidence_red_stays","instruction":"Blue stays where it is, and red goes to the goal.","expected_object":"cube_red"},
+  {"id":"evidence_blue_stays","instruction":"Red stays where it is, and blue goes to the goal.","expected_object":"cube_blue"},
+  {"id":"evidence_missing_turquoise","instruction":"Move the turquoise cube into the green goal.","expected_object":null},
+  {"id":"evidence_magenta_target","instruction":"Place the blue cube in the magenta goal region.","expected_object":null},
+  {"id":"evidence_either","instruction":"Use either cube for the green circle.","expected_object":null},
+  {"id":"evidence_unbound","instruction":"The green goal is ready. Put that one there.","expected_object":null},
+  {"id":"evidence_both","instruction":"Move both blocks into the goal, one after the other.","expected_object":null},
+  {"id":"evidence_relative","instruction":"Put blue to the left of red.","expected_object":null},
+  {"id":"evidence_negative","instruction":"Don't move blue or red.","expected_object":null},
+  {"id":"evidence_coordinates","instruction":"Move red to coordinates [0.14, 0.0, 0.025].","expected_object":null}
+]

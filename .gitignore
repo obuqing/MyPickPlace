@@ -1,5 +1,6 @@
 # Local environments and generated Python files
 .venv/
+/.venv-peg/
 venv/
 __pycache__/
 *.py[cod]
@@ -9,9 +10,11 @@ __pycache__/
 .coverage
 htmlcov/
 
-# Successful experiments, checkpoints, videos and portable Ollama stay LOCAL.
+# Experiment outputs, trained checkpoints, videos and portable Ollama stay LOCAL.
 # Ignoring these paths does not delete their contents.
 /runs/
+/checkpoints/*
+!/checkpoints/.gitkeep
 /.cache/
 *.zip
 *.pkl

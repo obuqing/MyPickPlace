@@ -1,0 +1,7 @@
+{
+  "status": "execute",
+  "object_id": "cube_blue",
+  "target_id": "goal",
+  "skills": ["reach", "grasp", "move", "place"],
+  "reason": "Offline fixture: place the blue cube in the green goal region."
+}

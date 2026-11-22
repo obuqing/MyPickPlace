@@ -1,0 +1,22 @@
+[
+  {"id": "red_direct", "instruction": "Pick up the red cube and place it in the green goal region.", "expected_object": "cube_red"},
+  {"id": "blue_direct", "instruction": "Pick up the blue cube and place it in the green goal region.", "expected_object": "cube_blue"},
+  {"id": "red_paraphrase", "instruction": "Move the red block onto the green target.", "expected_object": "cube_red"},
+  {"id": "blue_paraphrase", "instruction": "Move the blue block onto the green target.", "expected_object": "cube_blue"},
+  {"id": "red_polite", "instruction": "Could you put the red one in the marked green area, please?", "expected_object": "cube_red"},
+  {"id": "blue_polite", "instruction": "Could you put the blue one in the marked green area, please?", "expected_object": "cube_blue"},
+  {"id": "red_distractor", "instruction": "Leave the blue cube alone and transfer the red cube to the green disk.", "expected_object": "cube_red"},
+  {"id": "blue_distractor", "instruction": "Leave the red cube alone and transfer the blue cube to the green disk.", "expected_object": "cube_blue"},
+  {"id": "red_correction", "instruction": "Put the blue cube in the goal. Actually, use the red cube instead.", "expected_object": "cube_red"},
+  {"id": "blue_correction", "instruction": "Put the red cube in the goal. Actually, use the blue cube instead.", "expected_object": "cube_blue"},
+  {"id": "red_negation", "instruction": "Move the red cube, not the blue one, into the green target region.", "expected_object": "cube_red"},
+  {"id": "blue_negation", "instruction": "Move the blue cube, not the red one, into the green target region.", "expected_object": "cube_blue"},
+  {"id": "missing_cube", "instruction": "Put the yellow cube in the green goal region.", "expected_object": null},
+  {"id": "green_is_target", "instruction": "Pick up the green cube and put it in the goal.", "expected_object": null},
+  {"id": "ambiguous_cube", "instruction": "Put the cube in the green target region.", "expected_object": null},
+  {"id": "two_objects", "instruction": "Put both the red cube and the blue cube in the green goal region.", "expected_object": null},
+  {"id": "stacking", "instruction": "Stack the red cube on top of the blue cube.", "expected_object": null},
+  {"id": "relative_placement", "instruction": "Place the red cube to the right of the blue cube.", "expected_object": null},
+  {"id": "negation_only", "instruction": "Do not move the red cube.", "expected_object": null},
+  {"id": "raw_coordinates", "instruction": "Move the blue cube to coordinates [2.0, 0.0, 0.5].", "expected_object": null}
+]
