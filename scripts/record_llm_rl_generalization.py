@@ -3,6 +3,7 @@ from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
+from panda_skills.paths import CARRY_CHECKPOINT
 
 import imageio.v2 as imageio
 import torch
@@ -51,7 +52,7 @@ def main():
                 previous_instructions.update(r['instruction'] for r in data if isinstance(r,dict) and isinstance(r.get('instruction'),str))
         assert all(c['seed'] not in used and c['instruction'] not in previous_instructions
                    and hashlib.sha256(c['instruction'].encode()).hexdigest() not in prior_hashes for c in CASES)
-        model_path=Path('runs/carry_curriculum_40000/training/best_model.zip')
+        model_path=CARRY_CHECKPOINT
         digest=hashlib.sha256(model_path.read_bytes()).hexdigest()
         torch.set_num_threads(1)
         policy=SAC.load(model_path,device='cpu')

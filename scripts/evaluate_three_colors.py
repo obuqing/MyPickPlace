@@ -3,6 +3,7 @@ from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
+from panda_skills.paths import CARRY_CHECKPOINT
 
 import imageio.v2 as imageio
 import numpy as np
@@ -84,7 +85,7 @@ def main():
         preflight=root/'diagnostics/preflight/manifest.json'
         old_seeds=set(json.loads(preflight.read_text())['physical_seeds']) if preflight.exists() else set()
         assert not ((proposed & used)-old_seeds)
-        model_path=Path('runs/carry_curriculum_40000/training/best_model.zip')
+        model_path=CARRY_CHECKPOINT
         torch.set_num_threads(1)
         policy=SAC.load(model_path,device='cpu')
         weights=parameter_digest(policy)

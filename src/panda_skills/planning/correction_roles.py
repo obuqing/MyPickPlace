@@ -35,7 +35,6 @@ def bind_destination_only(intent, instruction):
     if not candidates:
         return intent, None
     candidate = candidates[-1]
-    cue_start = tokens[candidate['cue_span']['start']]['start_char']
     replacement_start = tokens[candidate['replacement_span']['start']]['start_char']
     first_cue_start = tokens[candidates[0]['cue_span']['start']]['start_char']
     original = ORIGINAL.fullmatch(instruction[:first_cue_start])

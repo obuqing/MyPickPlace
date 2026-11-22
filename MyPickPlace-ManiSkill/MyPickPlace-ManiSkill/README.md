@@ -9,13 +9,14 @@ control lowers/releases. Rejected instructions make no control steps.
 
 Run commands from the outer workspace root. The existing `.venv` and portable
 Ollama installation are used by `run.cmd`.
+The launcher runs the repository-root `scripts/` for pick-and-place and carry.
 
 ```powershell
 .\run.cmd start_llama
 .\run.cmd run_instruction --executor rl --instruction "Place the blue cube on the green goal." --seed 81000 --output runs/my_rl_instruction
 ```
 
-The RL checkpoint is `runs/carry_curriculum_40000/training/best_model.zip`.
+The RL checkpoint is `checkpoints/pick_and_place/best_model.zip`.
 `--plan-only` skips execution. Explicit `--plan-file` replay is labeled offline.
 Only the validated two-stage planner is supported; it allows at most one evidence
 repair and no execution retry. See [LLM_RL.md](LLM_RL.md) for role corrections.
@@ -24,7 +25,7 @@ repair and no execution retry. See [LLM_RL.md](LLM_RL.md) for role corrections.
 
 ```powershell
 .\run.cmd evaluate_llm_rl --seed 80000 --output runs/my_llm_rl_evaluation
-.\run.cmd evaluate_carry --policy sac --model runs/carry_curriculum_40000/training/best_model.zip --episodes 10 --seed 82000 --output runs/my_carry_evaluation
+.\run.cmd evaluate_carry --policy sac --model checkpoints/pick_and_place/best_model.zip --episodes 10 --seed 82000 --output runs/my_carry_evaluation
 .\run.cmd check_planner_regressions --output runs/my_planner_regressions
 .\run.cmd evaluate_colors --output runs/my_scripted_evaluation
 .\run.cmd check_carry --output runs/my_interface_check
@@ -61,7 +62,8 @@ Cleanup inventory and preserved-file hashes: `runs/cleanup_failed_artifacts.json
 ## Checks and interface
 
 ```powershell
-.\.venv\python.exe -m unittest discover -s MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/tests -q
+$env:PYTHONPATH = "$PWD\src"
+.\.venv\python.exe -m unittest discover -s tests -q
 .\run.cmd test_env --steps 20
 ```
 

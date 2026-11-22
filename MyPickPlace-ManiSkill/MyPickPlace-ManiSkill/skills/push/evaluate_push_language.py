@@ -2,7 +2,8 @@
 import argparse
 import json
 from pathlib import Path
-from .push_instruction import execute,write,ROOT
+from checkpoint_paths import PUSH_CHECKPOINT
+from .push_instruction import execute, write
 
 
 def main():
@@ -17,7 +18,7 @@ def main():
     rows=[]
     for i,case in enumerate(cases):
         # Intentionally pass only the instruction, never expected labels.
-        result=execute(case['instruction'],args.output/case['id'],Path(__file__).resolve().parents[2]/'models/push/best_model.zip',
+        result=execute(case['instruction'],args.output/case['id'],PUSH_CHECKPOINT,
                        seed=530000+i,plan_only=args.plan_only)
         plan=result['plan']
         correct=plan['status']==case['expected']

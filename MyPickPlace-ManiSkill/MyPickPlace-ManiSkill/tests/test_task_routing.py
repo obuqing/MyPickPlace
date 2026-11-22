@@ -6,8 +6,8 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from algorithms.task_routing import select_skill, RoutingError
 from scripts.run_skills import main
+from panda_skills.planning.task_routing import RoutingError, select_skill
 from skills.push.push_language import plan
 
 

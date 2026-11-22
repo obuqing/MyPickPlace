@@ -40,7 +40,7 @@ curriculum pass. `resume.json` records checks and source artifact hashes.
 Frozen-policy generalization check and exactly two full execution videos:
 
 ```powershell
-.\run.cmd validate_carry_generalization --model runs/carry_curriculum_40000/training/best_model.zip --episodes 100 --seed 50000 --output runs/carry_generalization_200
+.\run.cmd validate_carry_generalization --model checkpoints/pick_and_place/best_model.zip --episodes 100 --seed 50000 --output runs/carry_generalization_200
 ```
 
 Audits actual previous scene records and rejects overlapping seeds. Tests each

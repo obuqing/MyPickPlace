@@ -6,11 +6,12 @@
 import argparse
 import json
 from pathlib import Path
+from checkpoint_paths import STACK_CHECKPOINT
 
 from .stack_language import plan as llm_plan
 
 CASES = Path(__file__).with_name("language_cases.json")
-DEFAULT_MODEL = Path(__file__).resolve().parents[2] / "models" / "stack" / "best_model.zip"
+DEFAULT_MODEL = STACK_CHECKPOINT
 
 
 def main():

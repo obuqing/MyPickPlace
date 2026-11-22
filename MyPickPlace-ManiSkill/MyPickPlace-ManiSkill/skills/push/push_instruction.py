@@ -3,10 +3,8 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from checkpoint_paths import PUSH_CHECKPOINT
 from .push_language import plan
-
-ROOT=Path(__file__).resolve().parents[4]
-
 
 def write(path,value):
     path.write_text(json.dumps(value,indent=2,ensure_ascii=False),encoding='utf-8')
@@ -71,7 +69,7 @@ def execute(instruction,output,checkpoint,seed=510000,plan_only=False,provider=N
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--instruction',required=True)
-    parser.add_argument('--model',type=Path,default=Path(__file__).resolve().parents[2]/'models/push/best_model.zip')
+    parser.add_argument('--model',type=Path,default=PUSH_CHECKPOINT)
     parser.add_argument('--seed',type=int,default=510000)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--plan-only',action='store_true')

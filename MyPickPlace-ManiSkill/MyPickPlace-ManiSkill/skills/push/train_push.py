@@ -3,48 +3,28 @@ import argparse
 import csv
 import hashlib
 import json
-import random
 import time
 from pathlib import Path
-import imageio.v2 as imageio
 import numpy as np
 import torch
 from stable_baselines3 import SAC
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
+from ..evaluation import evaluate_episodes, preserve_random_state, save, summarize
 from .push_skill import PushSkill, CONTRACT
 
 
-def save(path, value):
-    path.write_text(json.dumps(value,indent=2),encoding='utf-8')
-
-
-def evaluate(model, seeds, distances=(.05,.10,.15), video=None):
-    # Validation must not reset the training RNG via ManiSkill reset(seed).
-    states = (random.getstate(),np.random.get_state(),torch.get_rng_state())
+def evaluate(model, seeds, distances=(.05, .10, .15), video=None):
     rows = []
-    try:
+    with preserve_random_state():
         for distance in distances:
-            env = PushSkill(distance_m=distance,render_mode='rgb_array' if video else None)
-            try:
-                for seed in seeds:
-                    try:
-                        obs, _ = env.reset(seed=seed)
-                        while True:
-                            action = env.scripted_action() if model is None else model.predict(obs,deterministic=True)[0]
-                            obs, _, terminated, truncated, info = env.step(action)
-                            if terminated or truncated:
-                                break
-                        rows.append(info)
-                        if video:
-                            imageio.mimsave(str(video/f'{distance*100:g}cm_seed{seed}.mp4'),env.frames,fps=20)
-                    except RuntimeError as exc:
-                        rows.append(dict(seed=seed,distance_m=distance,success=False,reason=str(exc)))
-            finally:
-                env.close()
-    finally:
-        random.setstate(states[0]); np.random.set_state(states[1]); torch.set_rng_state(states[2])
-    return dict(successes=sum(r['success'] for r in rows),attempts=len(rows),rows=rows)
+            def video_path(seed, _info):
+                return video / f"{distance * 100:g}cm_seed{seed}.mp4"
+
+            env = PushSkill(distance_m=distance, render_mode="rgb_array" if video else None)
+            rows.extend(evaluate_episodes(env, model, seeds, video_path=video_path if video else None,
+                                          fps=20, failure_fields={"distance_m": distance}))
+    return summarize(rows)
 
 
 class Progress(BaseCallback):
@@ -76,14 +56,14 @@ def parameters(module):
     return torch.cat([p.detach().cpu().flatten() for p in module.parameters()])
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--steps',type=int,default=6000)
     parser.add_argument('--seed',type=int,default=0)
     parser.add_argument('--output',type=Path,required=True)
     parser.add_argument('--test-episodes',type=int,default=5,help='Per distance; three distances')
     parser.add_argument('--resume',type=Path,help='Previous complete run; restores model and replay buffer')
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.steps < 2000 or args.steps % 2000 or not 0 <= args.seed < 100000 or args.test_episodes < 1:
         parser.error('steps must be a positive multiple of 2000; seed 0..99999; test episodes >=1')
     root = args.output.resolve()
@@ -99,8 +79,10 @@ def main():
     save(root/'config.json',config)
     frozen = root/'source'; frozen.mkdir()
     hashes = {}
-    for name in ('push_distance.py','push_skill.py','train_push.py'):
-        data = Path(__file__).with_name(name).read_bytes()
+    for name in ('push_distance.py', 'push_skill.py', 'train_push.py', '../evaluation.py'):
+        source = Path(__file__).parent / name
+        data = source.read_bytes()
+        name = source.name
         (frozen/name).write_bytes(data)
         hashes[name] = hashlib.sha256(data).hexdigest()
     save(root/'source_hashes.json',hashes)

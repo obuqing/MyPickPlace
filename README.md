@@ -15,10 +15,40 @@ and the original pick/place and carry entry points.
 
 | Workflow | Entry point and documentation |
 |---|---|
-| Pick/place and carry | `run.cmd` · [Original project](MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/README.md) |
+| Pick/place and carry | `run.cmd` · [Windows commands](MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/README.md) |
 | Distance pushing | `run-skills.cmd run_skills` · [Setup and commands](PUSH_INTEGRATION.md) |
 | Cube stacking | `run-skills.cmd run_stack_instruction` · [Training and execution](MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/skills/stack/README.md) |
 | Peg insertion | `uv run python scripts/train_peg_insertion.py` · [Setup](#setup) |
+
+## Training and checkpoints
+
+Use `python scripts/train.py --task <task>` with the Python environment for that
+task. The launcher passes the remaining flags to the existing trainer. On Windows,
+`run-skills.cmd train` uses the configured ManiSkill environment for the SAC tasks:
+
+```powershell
+.\run-skills.cmd train --task pick_and_place --steps 20000 --output runs/pick_and_place/curriculum
+.\run-skills.cmd train --task push --steps 6000 --output runs/push/baseline
+.\run-skills.cmd train --task stack --steps 20000 --output runs/stack/baseline
+uv run python scripts/train.py --task peg_insertion --help
+```
+
+Use `--help` after `--task` to see that trainer's options. The original
+task-specific training commands still work.
+
+The Windows launchers and the shared instruction command use the same
+pick/place and carry implementation in `src/panda_skills/`. Run the Python
+command directly from `scripts/` when using an installed environment.
+
+| Task | Default published checkpoint |
+|---|---|
+| `pick_and_place` | `checkpoints/pick_and_place/best_model.zip` (carry SAC) |
+| `push` | `checkpoints/push/best_model.zip` (with adjacent `config.json`) |
+| `stack` | `checkpoints/stack/best_model.zip` (shared by two- and three-cube stacking) |
+| `peg_insertion` | `checkpoints/peg_insertion/best.pt` (reserved until a trained model is available) |
+
+Keep individual training runs under `runs/<task>/`. To use a model from a
+specific run, pass the trainer or inference command's existing model argument.
 
 ## Setup
 
@@ -56,7 +86,7 @@ src/panda_skills/         installable package
   paths.py                project directories (configs/, checkpoints/, runs/)
 scripts/                  command-line entry points
 configs/                  planner cases and env configs
-checkpoints/              trained policy checkpoints (gitignored)
+checkpoints/              published policies by task
 runs/                     experiment outputs and reports (gitignored)
 docs/                     per-skill notes
 tests/
@@ -71,12 +101,12 @@ for example `panda_skills.training.ppo` for any GPU-vectorized ManiSkill env.
 ```bash
 uv run python scripts/train_peg_insertion.py                    # full run (~250M env steps)
 uv run python scripts/train_peg_insertion.py --num-envs 256 --total-timesteps 2000000   # quick try
-uv run python scripts/train_peg_insertion.py --checkpoint checkpoints/peg_insertion/<run>/latest.pt   # resume
-uv run python scripts/train_peg_insertion.py --evaluate --checkpoint checkpoints/peg_insertion/<run>/best.pt --capture-video
+uv run python scripts/train_peg_insertion.py --checkpoint runs/peg_insertion/<run>/latest.pt   # resume
+uv run python scripts/train_peg_insertion.py --evaluate --checkpoint runs/peg_insertion/<run>/best.pt --capture-video
 uv run python scripts/train_peg_insertion.py --help             # all hyper-parameters
 ```
 
-Each run writes to `checkpoints/peg_insertion/<run_name>/`: `config.json`, `metrics.jsonl`,
+Each new run writes to `runs/peg_insertion/<run_name>/`: `config.json`, `metrics.jsonl`,
 `latest.pt`, `best.pt` (highest eval success rate) and `ckpt_<step>.pt`.
 
 ## Pick/place + carry: Llama 3 + frozen SAC
@@ -95,7 +125,7 @@ uv run python scripts/start_llama.py
 uv run python scripts/run_instruction.py --executor rl --instruction "Place the blue cube on the green goal." --seed 81000 --output runs/my_rl_instruction
 ```
 
-The RL checkpoint is `runs/carry_curriculum_40000/training/best_model.zip`.
+The RL checkpoint is `checkpoints/pick_and_place/best_model.zip`.
 `--plan-only` skips execution. Explicit `--plan-file` replay is labeled offline.
 Only the validated two-stage planner is supported; it allows at most one evidence
 repair and no execution retry. See [docs/LLM_RL.md](docs/LLM_RL.md) for role corrections.
@@ -104,7 +134,7 @@ repair and no execution retry. See [docs/LLM_RL.md](docs/LLM_RL.md) for role cor
 
 ```bash
 uv run python scripts/evaluate_llm_rl.py --seed 80000 --output runs/my_llm_rl_evaluation
-uv run python scripts/evaluate_carry.py --policy sac --model runs/carry_curriculum_40000/training/best_model.zip --episodes 10 --seed 82000 --output runs/my_carry_evaluation
+uv run python scripts/evaluate_carry.py --policy sac --model checkpoints/pick_and_place/best_model.zip --episodes 10 --seed 82000 --output runs/my_carry_evaluation
 uv run python scripts/check_planner_regressions.py --output runs/my_planner_regressions
 uv run python scripts/evaluate_colors.py --output runs/my_scripted_evaluation
 uv run python scripts/check_carry.py --output runs/my_interface_check

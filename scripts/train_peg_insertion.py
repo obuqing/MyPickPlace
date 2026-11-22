@@ -1,11 +1,11 @@
 """Train a Panda peg-insertion policy (ManiSkill PegInsertionSide-v1) with GPU-parallel PPO.
 
-Checkpoints go to checkpoints/peg_insertion/<run_name>/ (latest.pt, best.pt, ckpt_<step>.pt).
+Training writes to runs/peg_insertion/<run_name>/ (latest.pt, best.pt, ckpt_<step>.pt).
 
     uv run python scripts/train_peg_insertion.py                         # full run
     uv run python scripts/train_peg_insertion.py --num-envs 256 --total-timesteps 2000000   # quick try
-    uv run python scripts/train_peg_insertion.py --checkpoint checkpoints/peg_insertion/<run>/latest.pt   # resume
-    uv run python scripts/train_peg_insertion.py --evaluate --checkpoint checkpoints/peg_insertion/<run>/best.pt --capture-video
+    uv run python scripts/train_peg_insertion.py --checkpoint runs/peg_insertion/<run>/latest.pt   # resume
+    uv run python scripts/train_peg_insertion.py --evaluate --checkpoint runs/peg_insertion/<run>/best.pt --capture-video
 
 Every hyper-parameter in panda_skills.training.ppo.PPOConfig is a flag (see --help).
 Defaults follow ManiSkill's published PPO baseline settings for this task: peg insertion
@@ -13,10 +13,12 @@ is a long-horizon, contact-rich task and typically needs on the order of 10^8 en
 from state observations before success rates climb.
 """
 
-from panda_skills.training.ppo import PPOConfig, main
+from panda_skills.paths import PEG_INSERTION_CHECKPOINT, RUNS_DIR
+from panda_skills.training.ppo import PPOConfig, build_parser, train
 
 PEG_INSERTION_DEFAULTS = PPOConfig(
     skill="peg_insertion",
+    output_dir=RUNS_DIR,
     num_envs=2048,
     num_steps=100,
     num_eval_steps=100,
@@ -28,5 +30,15 @@ PEG_INSERTION_DEFAULTS = PPOConfig(
     eval_freq=20,
 )
 
+def main(argv=None):
+    parser = build_parser(PEG_INSERTION_DEFAULTS)
+    args = parser.parse_args(argv)
+    if args.evaluate and args.checkpoint is None and args.skill == "peg_insertion":
+        if not PEG_INSERTION_CHECKPOINT.is_file():
+            parser.error(f"No published checkpoint at {PEG_INSERTION_CHECKPOINT}; pass --checkpoint")
+        args.checkpoint = PEG_INSERTION_CHECKPOINT
+    train(PPOConfig(**vars(args)))
+
+
 if __name__ == "__main__":
-    main(defaults=PEG_INSERTION_DEFAULTS)
+    main()

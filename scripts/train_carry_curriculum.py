@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -14,18 +15,19 @@ import numpy as np
 import torch
 from stable_baselines3 import SAC
 from stable_baselines3.common.monitor import Monitor
+from panda_skills.paths import PROJECT_ROOT
 from panda_skills.training.carry_validation import CarryValidation
 from panda_skills.training.carry_callbacks import Progress
 from panda_skills.training.carry_curriculum import STAGES, promotion_streak, resume_cursor
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=Path('runs/carry_curriculum_20000'))
     parser.add_argument('--steps', type=int, default=20000)
     parser.add_argument('--resume', type=Path, help='Completed curriculum run; steps is additional budget')
     parser.add_argument('--seed', type=int, default=0, help='New rollout RNG seed; use a new seed when resuming')
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if args.steps < 2000 or args.steps % 2000:
         parser.error('Steps must be a positive multiple of 2000')
     start_step, stage, streak = 0, 0, 0
@@ -42,7 +44,7 @@ def main():
     root.mkdir(parents=True, exist_ok=False)
     training = root / 'training'
     training.mkdir()
-    project = Path(__file__).resolve().parents[1]
+    project = PROJECT_ROOT
     config = dict(stages=STAGES, promotion_rate=.8, consecutive_passes=2,
                   interval=2000, steps=end_step, additional_steps=args.steps, start_step=start_step,
                   fresh_model=source is None, resume_source=str(source) if source else None, training_seed=args.seed,
@@ -63,6 +65,10 @@ def main():
     (root/'manifest.json').write_text(json.dumps(hashes, indent=2), encoding='utf-8')
     state = dict(status='running', phase='initializing', steps=start_step, target_steps=end_step,
                  stage=stage, max_target_distance=STAGES[stage], started=datetime.now().isoformat())
+    evaluator_env = os.environ.copy()
+    python_paths = [str(project / "src"), evaluator_env.get("PYTHONPATH")]
+    evaluator_env["PYTHONPATH"] = os.pathsep.join(filter(None, python_paths))
+
     def save():
         (root/'status.json').write_text(json.dumps(state, indent=2), encoding='utf-8')
     def evaluate(checkpoint, destination, seed, episodes, radius=None):
@@ -72,7 +78,7 @@ def main():
         if radius is not None:
             command += ['--max-target-distance', str(radius)]
         with (destination/'evaluation.log').open('w', encoding='utf-8') as log:
-            subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True)
+            subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True, env=evaluator_env)
         return json.loads((destination/'summary.json').read_text())['summary']['all']
     save()
     torch.set_num_threads(1)

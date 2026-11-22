@@ -4,6 +4,7 @@ from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
+from panda_skills.paths import CARRY_CHECKPOINT
 
 import torch
 from stable_baselines3 import SAC
@@ -27,7 +28,7 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--instruction',required=True)
     parser.add_argument('--seed',type=int,default=95000)
-    parser.add_argument('--model',type=Path,default=Path('runs/carry_curriculum_40000/training/best_model.zip'))
+    parser.add_argument('--model',type=Path,default=CARRY_CHECKPOINT)
     parser.add_argument('--output',type=Path)
     parser.add_argument('--plan-only',action='store_true')
     args=parser.parse_args()

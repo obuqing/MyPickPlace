@@ -5,6 +5,7 @@ from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
+from panda_skills.paths import CARRY_CHECKPOINT
 import time
 from urllib.request import urlopen
 
@@ -32,7 +33,7 @@ def main():
     project = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser()
     parser.add_argument('--output', type=Path, default=Path('runs/llm_rl_evaluation'))
-    parser.add_argument('--model', type=Path, default=Path('runs/carry_curriculum_40000/training/best_model.zip'))
+    parser.add_argument('--model', type=Path, default=CARRY_CHECKPOINT)
     parser.add_argument('--cases', type=Path, default=project/'configs/llm_rl_smoke_cases.json')
     parser.add_argument('--seed', type=int, default=80000)
     args = parser.parse_args()

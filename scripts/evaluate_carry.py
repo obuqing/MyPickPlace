@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 
 import panda_skills.envs  # noqa: F401  (registers custom envs)
+from panda_skills.paths import CARRY_CHECKPOINT
 from panda_skills.training.carry_evaluation import evaluate
 from panda_skills.policies.scripted_carry import ScriptedCarryPolicy
 
@@ -10,7 +11,7 @@ from panda_skills.policies.scripted_carry import ScriptedCarryPolicy
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--policy", choices=("scripted", "sac", "random"), default="scripted")
-    parser.add_argument("--model", type=Path)
+    parser.add_argument("--model", type=Path, default=CARRY_CHECKPOINT)
     parser.add_argument("--episodes", type=int, default=10, help="Episodes per color")
     parser.add_argument("--seed", type=int, default=1000)
     parser.add_argument("--output", type=Path)
@@ -19,8 +20,6 @@ def main():
     if args.episodes < 1:
         parser.error("--episodes must be positive")
     if args.policy == "sac":
-        if args.model is None:
-            parser.error("--model is required for SAC")
         from stable_baselines3 import SAC
         import torch
         torch.set_num_threads(1)

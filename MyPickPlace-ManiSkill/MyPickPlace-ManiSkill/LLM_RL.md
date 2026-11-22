@@ -18,7 +18,7 @@ Run an individual instruction with the local Ollama service available:
 .\run.cmd run_instruction --executor rl --instruction "Place the blue cube on the green goal." --seed 61000 --output runs/llm_rl_single
 ```
 
-The default RL checkpoint is `runs/carry_curriculum_40000/training/best_model.zip`.
+The default RL checkpoint is `checkpoints/pick_and_place/best_model.zip`.
 Use `--plan-only` to inspect a task without executing it. Explicit `--plan-file`
 replay remains labeled offline and is not reported as a real LLM test. The default
 executor stays scripted for compatibility; `--executor rl` selects frozen SAC.

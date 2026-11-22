@@ -9,6 +9,7 @@ import argparse
 import json
 import re
 from pathlib import Path
+from checkpoint_paths import STACK_CHECKPOINT
 
 import imageio.v2 as imageio
 from stable_baselines3 import SAC
@@ -16,7 +17,7 @@ from stable_baselines3 import SAC
 from .stack_language import plan as llm_plan
 from .three_cube_executor import ThreeCubeStacker
 
-DEFAULT_MODEL = Path(__file__).resolve().parents[2] / "models" / "stack" / "best_model.zip"
+DEFAULT_MODEL = STACK_CHECKPOINT
 
 
 def parse_manual(text):

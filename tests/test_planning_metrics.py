@@ -41,8 +41,9 @@ class ComparisonTests(unittest.TestCase):
             self.assertEqual(len(planner.prompt_sha256), 64)
 
     def test_new_cases_are_separate_and_absent_from_prompt(self):
-        old = json.loads((PROJECT / "configs/english_instruction_cases.json").read_text())
-        new = json.loads((PROJECT / "configs/english_instruction_holdout.json").read_text())
+        cases = json.loads((PROJECT / "configs/planner_regression_cases.json").read_text())
+        old = [case for case in cases if case["group"] == "development"]
+        new = [case for case in cases if case["group"] == "previous_holdout"]
         self.assertEqual(len(new), 20)
         self.assertEqual(sum(case["expected_object"] is not None for case in new), 12)
         self.assertFalse({case["instruction"] for case in old} & {case["instruction"] for case in new})

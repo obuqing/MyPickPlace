@@ -5,13 +5,14 @@ import json
 from pathlib import Path
 import torch
 from stable_baselines3 import SAC
+from checkpoint_paths import PUSH_CHECKPOINT
 from .train_push import evaluate, save
 from .push_skill import CONTRACT
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--model',type=Path,required=True)
+    parser.add_argument('--model',type=Path,default=PUSH_CHECKPOINT)
     parser.add_argument('--distance-cm',type=float,default=10)
     parser.add_argument('--seed',type=int,default=320000)
     parser.add_argument('--episodes',type=int,default=1)

@@ -5,18 +5,16 @@ Run from the repo root (new output folder each time):
 """
 import argparse
 import csv
-import json
-import random
 import time
 from pathlib import Path
 
-import imageio.v2 as imageio
 import numpy as np
 import torch
 from stable_baselines3 import SAC
 from stable_baselines3.common.callbacks import BaseCallback
 from stable_baselines3.common.monitor import Monitor
 
+from ..evaluation import evaluate_episodes, preserve_random_state, save, summarize
 from .stack_skill import CONTRACT, StackSkill
 
 VALIDATION_SEEDS = list(range(20000, 20010))   # used to pick the best checkpoint
@@ -25,34 +23,13 @@ VIDEO_SEEDS = [40000, 40001]
 DEMO_SEED_START = 10000                         # scenes used only for demonstrations
 
 
-def save(path, value):
-    path.write_text(json.dumps(value, indent=2), encoding="utf-8")
-
-
 def evaluate(model, seeds, video_dir=None):
-    """Run full episodes. model=None runs the hand-written scripted baseline."""
-    # Evaluation must not disturb the training random-number state.
-    states = (random.getstate(), np.random.get_state(), torch.get_rng_state())
-    rows = []
-    env = StackSkill(render_mode="rgb_array" if video_dir else None)
-    try:
-        for seed in seeds:
-            try:
-                obs, _ = env.reset(seed=seed)
-                while True:
-                    action = env.scripted_action() if model is None else model.predict(obs, deterministic=True)[0]
-                    obs, _, terminated, truncated, info = env.step(action)
-                    if terminated or truncated:
-                        break
-                rows.append(info)
-                if video_dir:
-                    imageio.mimsave(str(video_dir / f"seed{seed}_{info['reason']}.mp4"), env.frames, fps=30)
-            except RuntimeError as exc:   # scripted grasp failed: counted as a failure, not retried
-                rows.append(dict(seed=seed, success=False, reason=str(exc)))
-    finally:
-        env.close()
-        random.setstate(states[0]); np.random.set_state(states[1]); torch.set_rng_state(states[2])
-    return dict(successes=sum(r["success"] for r in rows), attempts=len(rows), rows=rows)
+    def video_path(seed, info):
+        return video_dir / f"seed{seed}_{info['reason']}.mp4"
+
+    with preserve_random_state():
+        env = StackSkill(render_mode="rgb_array" if video_dir else None)
+        return summarize(evaluate_episodes(env, model, seeds, video_path=video_path if video_dir else None))
 
 
 class Progress(BaseCallback):
@@ -124,14 +101,14 @@ class RobustStackSkill(StackSkill):
         raise RuntimeError("Scripted grasp failed 10 times in a row")
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--steps", type=int, default=30000, help="RL steps (one step = one ~1 cm move)")
     parser.add_argument("--eval-every", type=int, default=2000)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--demos", type=int, default=30, help="Scripted demonstration episodes (0 = none)")
     parser.add_argument("--output", type=Path, required=True)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     root = args.output.resolve()
     root.mkdir(parents=True, exist_ok=False)   # never overwrite a previous run
     torch.set_num_threads(1)

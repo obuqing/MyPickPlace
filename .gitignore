@@ -13,8 +13,7 @@ htmlcov/
 # Experiment outputs, trained checkpoints, videos and portable Ollama stay LOCAL.
 # Ignoring these paths does not delete their contents.
 /runs/
-/checkpoints/*
-!/checkpoints/.gitkeep
+/checkpoints/*/*
 /.cache/
 *.zip
 *.pkl
@@ -26,6 +25,15 @@ htmlcov/
 *.mp4
 *.log
 *.pid
+
+# Published policies and their companion files
+!/checkpoints/pick_and_place/best_model.zip
+!/checkpoints/push/best_model.zip
+!/checkpoints/push/*.json
+!/checkpoints/push/README.md
+!/checkpoints/stack/best_model.zip
+!/checkpoints/peg_insertion/best.pt
+!/checkpoints/peg_insertion/README.md
 
 # Personal IDE / operating-system files
 .idea/

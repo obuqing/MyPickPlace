@@ -73,7 +73,7 @@ Run the original default pick-and-place workflow:
 Run the original carry SAC workflow, after obtaining its checkpoint from Buqing:
 
 ```powershell
-.\run-skills.cmd run_skills --instruction "Put the blue cube in the green goal region." --executor rl --rl-model runs/carry_curriculum_40000/training/best_model.zip
+.\run-skills.cmd run_skills --instruction "Put the blue cube in the green goal region." --executor rl --rl-model checkpoints/pick_and_place/best_model.zip
 ```
 
 Use a new output directory for each run, or omit `--output` to generate a
@@ -121,17 +121,12 @@ The historical frozen-policy evaluation succeeded in 58/60 episodes: 20/20 at
 5 cm, 20/20 at 10 cm, and 18/20 at 15 cm. The scripted baseline also achieved
 58/60, so these results do not establish SAC superiority. These evaluations
 predate repository integration; summaries and per-episode evidence are included
-under `models/push`.
+under `checkpoints/push`.
 
-Unified-entry checks and test results are recorded in
-`integration_validation.json`. Actual scripted pick-and-place execution was
-verified. The repository does not include Buqing's carry checkpoint, so this
-integration does not claim an end-to-end rerun of that SAC checkpoint.
-
-The integration validation record describes the initial shared-entry revision.
-That implementation was subsequently moved to the separate `run_skills.py`
-file to restore all original files. Its routing regression tests target the
-new entry; historical execution records retain their original instructions.
+The historical checks in `integration_validation.json` cover the initial
+shared-entry revision, including scripted pick-and-place execution. The
+current `run_skills.py` uses the same pick-and-place implementation as
+`run_instruction.py` and can load the published carry SAC checkpoint.
 
 ## Training and tests
 
@@ -140,12 +135,12 @@ new entry; historical execution records retain their original instructions.
 .\run-skills.cmd evaluate_push_language --output runs/push_language_checks
 ```
 
-Run the complete test suite in the configured environment:
+Run the push and routing tests in the configured environment:
 
 ```bash
 python -m unittest discover -s MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/tests
 ```
 
-Keep `models/push/config.json` beside the checkpoint; execution checks its control
+Keep `checkpoints/push/config.json` beside the checkpoint; execution checks its control
 contract. Store generated training artifacts, videos, and runs under `runs/`.
 Do not commit virtual environments, Ollama model files, or machine-specific paths.

@@ -8,14 +8,15 @@ import json
 from pathlib import Path
 
 from stable_baselines3 import SAC
+from checkpoint_paths import STACK_CHECKPOINT
 
 from .train_stack import evaluate
 
 
 def main():
     parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument("--model", type=Path, help="Trained SAC checkpoint (.zip)")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument("--model", type=Path, default=STACK_CHECKPOINT, help="Trained SAC checkpoint (.zip)")
     group.add_argument("--scripted", action="store_true", help="Run the hand-written baseline instead")
     parser.add_argument("--seed", type=int, default=50000)
     parser.add_argument("--episodes", type=int, default=3)
