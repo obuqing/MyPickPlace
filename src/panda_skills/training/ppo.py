@@ -86,6 +86,8 @@ class PPOConfig:
     """Resume training from (or, with --evaluate, evaluate) this checkpoint."""
     evaluate: bool = False
     cuda: bool = True
+    gpu_memory_fraction: Optional[float] = None
+    """Cap PyTorch's share of GPU memory (0-1). PhysX sim buffers are allocated outside this cap."""
 
 
 def layer_init(layer, std=math.sqrt(2), bias_const=0.0):
@@ -178,6 +180,8 @@ def train(config: PPOConfig):
     device = torch.device("cuda" if config.cuda and torch.cuda.is_available() else "cpu")
     if device.type != "cuda":
         raise SystemExit("GPU-parallel ManiSkill PPO requires CUDA (sim_backend=physx_cuda)")
+    if config.gpu_memory_fraction is not None:
+        torch.cuda.set_per_process_memory_fraction(config.gpu_memory_fraction, torch.cuda.current_device())
 
     run_name = config.run_name or datetime.now().strftime("%Y%m%d_%H%M%S") + f"_seed{config.seed}"
     run_dir = Path(config.output_dir) / config.skill / run_name
