@@ -15,10 +15,14 @@ and the original pick/place and carry entry points.
 
 | Workflow | Entry point and documentation |
 |---|---|
-| Pick/place and carry | `run.cmd` · [Windows commands](MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/README.md) |
+| Pick/place and carry | `run.cmd` · [Windows commands](#windows-commands) |
 | Distance pushing | `run-skills.cmd run_skills` · [Setup and commands](PUSH_INTEGRATION.md) |
-| Cube stacking | `run-skills.cmd run_stack_instruction` · [Training and execution](MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/skills/stack/README.md) |
+| Cube stacking | `run-skills.cmd run_stack_instruction` · [Training and execution](docs/STACK.md) |
 | Peg insertion | `uv run python scripts/train_peg_insertion.py` · [Setup](#setup) |
+
+See [demo videos](demos/README.md) for successful runs of the published policies.
+Training logs, replay buffers, and intermediate checkpoints stay in the local
+`runs/` directory.
 
 ## Training and checkpoints
 
@@ -82,11 +86,14 @@ src/panda_skills/         installable package
   policies/               scripted and base policies
   planning/               LLM instruction -> structured plan
   execution/              run a validated plan with scripted/RL policies
+  push/                   distance pushing
+  stack/                  two- and three-cube stacking
   training/               trainers: carry SAC helpers, generic GPU PPO (ppo.py)
   paths.py                project directories (configs/, checkpoints/, runs/)
 scripts/                  command-line entry points
 configs/                  planner cases and env configs
 checkpoints/              published policies by task
+demos/                    selected successful videos by task
 runs/                     experiment outputs and reports (gitignored)
 docs/                     per-skill notes
 tests/
@@ -130,6 +137,31 @@ The RL checkpoint is `checkpoints/pick_and_place/best_model.zip`.
 Only the validated two-stage planner is supported; it allows at most one evidence
 repair and no execution retry. See [docs/LLM_RL.md](docs/LLM_RL.md) for role corrections.
 
+### Windows commands
+
+Run from the repository root. With the Conda-style environment at `.venv`,
+you can replace `uv run python scripts/<name>.py` with `.\run.cmd <name>`
+and pass the same arguments. This also applies to the evaluation and resume
+commands below.
+
+```powershell
+.\run.cmd start_llama
+.\run.cmd run_instruction --executor rl --instruction "Place the blue cube on the green goal." --seed 81000 --output runs/my_rl_instruction
+.\run.cmd run_three_instruction --instruction "Place the yellow cube on the green goal." --seed 95000 --output runs/my_yellow_instruction
+.\run.cmd test_env --steps 20
+```
+
+For the full test suite in that environment:
+
+```powershell
+$env:PATH = "$PWD\.venv;$PWD\.venv\Library\bin;$PWD\.venv\Scripts;$env:PATH"
+$env:PYTHONPATH = "$PWD\src"
+.\.venv\python.exe -m unittest discover -s tests -q
+```
+
+See [the carry curriculum](docs/CURRICULUM.md) for resume and generalization
+commands and [the three-color experiment](docs/THREE_COLORS.md) for scene details.
+
 ### Evaluate and train
 
 ```bash
@@ -154,7 +186,7 @@ uv run python scripts/train_carry_curriculum.py --resume runs/carry_curriculum_4
 `--steps` is the additional budget. See [docs/CURRICULUM.md](docs/CURRICULUM.md) for promotion
 criteria and diagnostics. This command starts new training only when you run it.
 
-### Saved results
+### Local experiment results
 
 - `runs/carry_curriculum_40000`: successful trained model, replay buffer and report.
 - `runs/carry_generalization_200`: 100 unseen scene seeds per color, 200/200 placements.
@@ -166,7 +198,6 @@ criteria and diagnostics. This command starts new training only when you run it.
 
 Older successful checkpoints/videos are preserved. Failed checkpoints, experiment
 outputs, retired direct-planning prompts and one-off comparison scripts were removed.
-Cleanup inventory and preserved-file hashes: `runs/cleanup_failed_artifacts.json`.
 
 ### Checks and interface
 

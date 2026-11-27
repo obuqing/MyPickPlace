@@ -12,6 +12,6 @@ exit /b 1
 for %%I in ("%MYPICKPLACE_PYTHON%") do set "PYTHON_DIR=%%~dpI"
 set "PATH=%PYTHON_DIR%;%PYTHON_DIR%Library\bin;%PYTHON_DIR%Scripts;%PATH%"
 set "PYTHONIOENCODING=utf-8"
-"%MYPICKPLACE_PYTHON%" "%~dp0MyPickPlace-ManiSkill\MyPickPlace-ManiSkill\scripts\dispatch.py" %*
+"%MYPICKPLACE_PYTHON%" "%~dp0scripts\dispatch.py" %*
 set "result=%errorlevel%"
 exit /b %result%

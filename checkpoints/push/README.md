@@ -17,7 +17,7 @@ record the later fixed 60-episode comparison described in
 protocol is the original training-run provenance, not an installation path.
 Do not infer generalization to arbitrary objects, directions, or surfaces.
 
-The source was moved into `skills/push` during integration; imports and artifact
+The source is in `src/panda_skills/push`; imports and artifact
 paths changed. Training/control parameters and checkpoint weights did not.
 Unified-entry verification is recorded in the repository-root
 `integration_validation.json`. The published checkpoint and its companion files

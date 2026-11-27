@@ -37,7 +37,7 @@ waiting for a keypress. On Linux/macOS, or in an activated environment, invoke
 the script directly:
 
 ```bash
-python MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/scripts/run_skills.py --help
+python scripts/dispatch.py run_skills --help
 ```
 
 Pushing currently supports Ollama only, with default endpoint
@@ -138,7 +138,7 @@ current `run_skills.py` uses the same pick-and-place implementation as
 Run the push and routing tests in the configured environment:
 
 ```bash
-python -m unittest discover -s MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/tests
+python -m unittest discover -s tests -p 'test_push*.py'
 ```
 
 Keep `checkpoints/push/config.json` beside the checkpoint; execution checks its control

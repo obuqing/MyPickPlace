@@ -7,11 +7,10 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-LEGACY_PROJECT = ROOT / "MyPickPlace-ManiSkill" / "MyPickPlace-ManiSkill"
 TRAINERS = {
     "pick_and_place": "scripts.train_carry_curriculum",
-    "push": "skills.push.train_push",
-    "stack": "skills.stack.train_stack",
+    "push": "panda_skills.push.train_push",
+    "stack": "panda_skills.stack.train_stack",
     "peg_insertion": "scripts.train_peg_insertion",
 }
 
@@ -29,7 +28,7 @@ def main():
     if args.help:
         trainer_args.append("--help")
     trainer = TRAINERS[args.task]
-    sys.path.insert(0, str(LEGACY_PROJECT if trainer.startswith("skills.") else ROOT))
+    sys.path.insert(0, str(ROOT))
     return import_module(trainer).main(trainer_args)
 
 

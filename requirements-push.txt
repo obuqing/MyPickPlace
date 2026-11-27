@@ -1,4 +1,4 @@
--r MyPickPlace-ManiSkill/MyPickPlace-ManiSkill/requirements.txt
+-r requirements.txt
 imageio
 imageio-ffmpeg
 scipy

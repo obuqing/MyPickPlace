@@ -10,7 +10,7 @@ __pycache__/
 .coverage
 htmlcov/
 
-# Experiment outputs, trained checkpoints, videos and portable Ollama stay LOCAL.
+# Local experiment outputs, unpublished checkpoints and portable Ollama
 # Ignoring these paths does not delete their contents.
 /runs/
 /checkpoints/*/*
@@ -34,6 +34,9 @@ htmlcov/
 !/checkpoints/stack/best_model.zip
 !/checkpoints/peg_insertion/best.pt
 !/checkpoints/peg_insertion/README.md
+
+# Selected demonstration videos
+!/demos/**/*.mp4
 
 # Personal IDE / operating-system files
 .idea/
